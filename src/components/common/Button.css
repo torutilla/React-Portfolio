@@ -7,10 +7,18 @@ button{
     appearance: none;
     cursor: pointer;
     transition: ease-in 0.2s;
+    &:hover{
+        background-color:var(--accent-color);
+        border-color: var(--accent-color);
+        color: var(--hover-text-color);
+    }
+    &:focus{
+        background-color: black;
+    }
 }
 
-button:hover{
+/* button:hover{
     background-color:var(--accent-color);
     border-color: var(--accent-color);
     color: var(--hover-text-color);
-}
+} */
