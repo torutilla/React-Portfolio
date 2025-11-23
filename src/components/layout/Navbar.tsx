@@ -18,16 +18,16 @@ function Navbar({ logoSrc, navigations, button }: NavbarProps) {
       </a>
       <ul className="flex gap-6">
         {navigations.map((element) => (
-          <li key={element.heading} className="self-center">
+          <li key={element.heading} className="self-center hidden sm:flex">
             <a
               href={element.navigateTo}
-              className="hover:text-(--accent-color) transition duration-100 ease-in-out"
+              className="hover:text-accent transition duration-100 ease-in-out"
             >
               {element.heading}
             </a>
           </li>
         ))}
-        <IconButton text={button.heading} />
+        <IconButton>{button.heading}</IconButton>
       </ul>
     </nav>
   );

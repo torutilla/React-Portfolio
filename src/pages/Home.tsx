@@ -12,7 +12,7 @@ function Home() {
     navigateTo: "#ContactMe",
   };
   return (
-    <div>
+    <div className="">
       <Navbar logoSrc="./vite.svg" navigations={links} button={contactButton} />
       <Hero />
     </div>
