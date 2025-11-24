@@ -18,9 +18,12 @@ function IconButton({ onClick, icon: Icon, children }: IconButtonProps) {
       const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+      console.log(x, y);
+      span.style.left = `${x}px`;
+      span.style.top = `${y}px`;
+      span.style.scale = "100";
 
-      btn.style.setProperty("--origin-x", `${x}px`);
-      btn.style.setProperty("--origin-y", `${y}px`);
+      setTimeout(() => (span.style.scale = "0"), 350);
     };
     btn.addEventListener("click", handleClick);
     return () => btn.removeEventListener("click", handleClick);
@@ -45,7 +48,12 @@ function IconButton({ onClick, icon: Icon, children }: IconButtonProps) {
     >
       <span
         ref={spanRef}
-        className="absolute bg-black inset-0 scale-0 transition-all duration-75 group-active:animate-ripple -z-1 rounded-full size-32"
+        className="absolute pointer-events-none rounded-full 
+        bg-black/45 w-32 h-32 scale-0
+        opacity-100
+        -translate-x-1/2 -translate-y-1/2 
+        transition-all duration-[3s]
+        -z-1"
       ></span>
       {Icon && <Icon fontSize="inherit" className="" />}
       {children}
