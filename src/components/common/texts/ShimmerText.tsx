@@ -9,14 +9,20 @@ type ShimmerTextProps = {
 function ShimmerText({ text, size }: ShimmerTextProps) {
   const ref = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    gsap.to(ref.current, { y: 0, duration: 1, ease: "ease-in" });
+    gsap.fromTo(
+      ref.current,
+      { opacity: 0 },
+      { y: 0, duration: 1, ease: "ease-in", opacity: 1 }
+    );
   }, []);
   return (
     <div className="overflow-hidden">
       <h1
         ref={ref}
         data-text={text}
-        className={`translate-y-100 relative font-extrabold text-${size} text-4xl md:text-5xl lg:text-6xl
+        className={`
+          ml-4 mr-4
+          translate-y-100 relative font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl
         font-title
         after:bg-linear-to-r after:from-transparent 
         after:via-white/50 after:text-transparent

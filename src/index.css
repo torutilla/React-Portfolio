@@ -156,20 +156,16 @@
   --spacing-xl: var(--spacing-xl);
   --spacing-xxl: var(--spacing-xxl);
 
-  --animate-ripple: ripple 3s ease-out forwards;
+  --animate-ripple: ripple 500ms ease-out forwards;
   --animate-shimmer: shimmer 4s linear infinite;
 }
 @keyframes ripple {
-  0% {
+  from {
     transform: scale(0);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(100);
     opacity: 1;
   }
-  100% {
-    transform: scale(0);
+  to {
+    transform: scale(4);
     opacity: 0;
   }
 }

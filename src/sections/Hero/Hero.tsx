@@ -1,6 +1,4 @@
-import { LightMode } from "@mui/icons-material";
-import IconButton from "../../components/common/Button.tsx";
-import FloatingIconButton from "../../components/common/buttons/FloatingIconButton.tsx";
+import Button from "../../components/common/Button.tsx";
 import ShimmerText from "../../components/common/texts/ShimmerText.tsx";
 function Hero() {
   return (
@@ -15,9 +13,8 @@ function Hero() {
         </p>
       </div>
       <div className="call-to-action flex gap-2 justify-center">
-        <IconButton>View Resume</IconButton>
-        <IconButton>View Works</IconButton>
-        <FloatingIconButton icon={LightMode} position="bottom-right" />
+        <Button>View Resume</Button>
+        <Button>View Works</Button>
       </div>
     </div>
   );

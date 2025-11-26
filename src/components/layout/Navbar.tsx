@@ -1,4 +1,5 @@
-import IconButton from "../common/Button.tsx";
+import Button from "../common/Button.tsx";
+import BurgerButton from "../common/buttons/BurgerButton.tsx";
 export type Navigation = {
   heading: string;
   navigateTo: string;
@@ -8,15 +9,23 @@ type NavbarProps = {
   logoSrc: string;
   navigations: Navigation[];
   button: Navigation;
+  menuOpen: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-function Navbar({ logoSrc, navigations, button }: NavbarProps) {
+function Navbar({
+  logoSrc,
+  navigations,
+  button,
+  menuOpen,
+  setOpen,
+}: NavbarProps) {
   return (
     <nav className="absolute p-4 flex w-full justify-between items-center z-50">
       <a href="#">
         <img src={logoSrc} alt="" />
       </a>
-      <ul className="flex gap-6">
+      <ul className="hidden gap-6 md:flex lg:flex">
         {navigations.map((element) => (
           <li key={element.heading} className="self-center hidden sm:flex">
             <a
@@ -27,8 +36,9 @@ function Navbar({ logoSrc, navigations, button }: NavbarProps) {
             </a>
           </li>
         ))}
-        <IconButton>{button.heading}</IconButton>
+        <Button>{button.heading}</Button>
       </ul>
+      <BurgerButton onClick={() => setOpen(!menuOpen)} />
     </nav>
   );
 }
