@@ -10,7 +10,7 @@ type NavbarProps = {
   navigations: Navigation[];
   button: Navigation;
   menuOpen: boolean;
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSidebarActive: () => void;
 };
 
 function Navbar({
@@ -18,19 +18,23 @@ function Navbar({
   navigations,
   button,
   menuOpen,
-  setOpen,
+  setSidebarActive,
 }: NavbarProps) {
+  const handleOnScroll = () => {};
   return (
-    <nav className="absolute p-4 flex w-full justify-between items-center z-50">
+    <nav
+      onScroll={handleOnScroll}
+      className="absolute p-4 flex w-full justify-between items-center z-50 top-0 m-4 mt-0"
+    >
       <a href="#">
         <img src={logoSrc} alt="" />
       </a>
-      <ul className="hidden gap-6 md:flex lg:flex">
+      <ul className="hidden gap-6 md:flex">
         {navigations.map((element) => (
           <li key={element.heading} className="self-center hidden sm:flex">
             <a
               href={element.navigateTo}
-              className="hover:text-accent transition duration-100 ease-in-out"
+              className="hover:text-accent transition duration-100 ease-in-out text-md"
             >
               {element.heading}
             </a>
@@ -38,7 +42,7 @@ function Navbar({
         ))}
         <Button>{button.heading}</Button>
       </ul>
-      <BurgerButton onClick={() => setOpen(!menuOpen)} />
+      <BurgerButton onClick={setSidebarActive} isActive={menuOpen} />
     </nav>
   );
 }
