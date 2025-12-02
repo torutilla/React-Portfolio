@@ -24,21 +24,19 @@ function Navbar({
   setSidebarActive,
 }: NavbarProps) {
   const smoother = useContext(SmootherContext);
-  const navRef = useRef<HTMLElement>(null);
+  const spanRef = useRef<HTMLSpanElement>(null);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 200) {
-        gsap.to(navRef.current, {
-          filter: "blur(5px)",
+        gsap.to(spanRef.current, {
+          backdropFilter: "blur(5px)",
         });
       }
     });
   }, []);
   return (
-    <nav
-      ref={navRef}
-      className="fixed p-5 flex w-full self-center justify-between items-center z-50 top-0"
-    >
+    <nav className="fixed p-4 flex w-full self-center justify-between items-center z-50 top-0 m-0">
+      <span ref={spanRef} className="absolute inset-0 -z-10"></span>
       <a href="#">
         <img src={logoSrc} alt="" />
       </a>
