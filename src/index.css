@@ -158,6 +158,10 @@
 
   --animate-ripple: ripple 500ms ease-out forwards;
   --animate-shimmer: shimmer 4s linear infinite;
+
+  --breakpoint-xs: 480px;
+
+  --text-md: 1rem;
 }
 @keyframes ripple {
   from {
