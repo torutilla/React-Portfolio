@@ -1,5 +1,8 @@
-import Button from "../common/Button.tsx";
+import OutlineButton from "../common/buttons/OutlineButton.tsx";
 import BurgerButton from "../common/buttons/BurgerButton.tsx";
+import { SmootherContext } from "../../lib/smootherContext.ts";
+import { useContext, useEffect, useRef } from "react";
+import gsap from "gsap";
 export type Navigation = {
   heading: string;
   navigateTo: string;
@@ -20,11 +23,21 @@ function Navbar({
   menuOpen,
   setSidebarActive,
 }: NavbarProps) {
-  const handleOnScroll = () => {};
+  const smoother = useContext(SmootherContext);
+  const navRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        gsap.to(navRef.current, {
+          filter: "blur(5px)",
+        });
+      }
+    });
+  }, []);
   return (
     <nav
-      onScroll={handleOnScroll}
-      className="absolute p-4 flex w-full justify-between items-center z-50 top-0 m-4 mt-0"
+      ref={navRef}
+      className="fixed p-5 flex w-full self-center justify-between items-center z-50 top-0"
     >
       <a href="#">
         <img src={logoSrc} alt="" />
@@ -33,6 +46,13 @@ function Navbar({
         {navigations.map((element) => (
           <li key={element.heading} className="self-center hidden sm:flex">
             <a
+              onClick={() => {
+                smoother?.current?.scrollTo(
+                  element.navigateTo,
+                  true,
+                  "center center"
+                );
+              }}
               href={element.navigateTo}
               className="hover:text-accent transition duration-100 ease-in-out text-md"
             >
@@ -40,7 +60,7 @@ function Navbar({
             </a>
           </li>
         ))}
-        <Button>{button.heading}</Button>
+        <OutlineButton>{button.heading}</OutlineButton>
       </ul>
       <BurgerButton onClick={setSidebarActive} isActive={menuOpen} />
     </nav>
