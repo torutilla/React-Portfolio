@@ -1,6 +1,6 @@
 import OutlineButton from "../common/buttons/OutlineButton.tsx";
 import BurgerButton from "../common/buttons/BurgerButton.tsx";
-import { SmootherContext } from "../../lib/smootherContext.ts";
+import { SmootherContext } from "../../lib/SmootherContext.ts";
 import { useContext, useEffect, useRef } from "react";
 import gsap from "gsap";
 export type Navigation = {
