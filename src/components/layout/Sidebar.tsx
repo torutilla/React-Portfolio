@@ -20,7 +20,7 @@ function Sidebar({ isOpen, navigations, onClose }: SidebarProps) {
     <div className="absolute h-screen w-full overflow-hidden">
       <div
         ref={ref}
-        className="bg-background absolute right-0 w-full xs:w-1/3 h-full z-40 transition-all origin-right md:hidden p-5"
+        className="bg-background absolute right-0 w-full h-full z-40 transition-all origin-right md:hidden p-5"
       >
         <ul className="flex flex-col h-auto mt-18 w-full gap-4">
           {navigations.map((nav) => (
