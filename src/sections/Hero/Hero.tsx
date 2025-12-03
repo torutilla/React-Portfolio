@@ -5,7 +5,7 @@ function Hero() {
   return (
     <div
       id="Home"
-      className="relative flex flex-col h-dvh w-dvw items-center justify-center gap-4 bg-(--bg-color) z-0"
+      className="bg-background relative flex flex-col h-dvh w-dvw items-center justify-center gap-4 z-0"
     >
       {/* <div className="h-full w-full bg-white absolute -z-1"></div> */}
 
