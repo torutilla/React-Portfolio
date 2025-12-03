@@ -4,13 +4,13 @@ import Home from "./pages/Home.tsx";
 import NavbarWrapper from "./components/layout/NavbarWrapper.tsx";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
-import { SmootherContext } from "./lib/smootherContext.ts";
+import { useEffect, useLayoutEffect, useRef } from "react";
+import { ScrollRefContext } from "./lib/SmootherContext.ts";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 function App() {
   const smootherRef = useRef<ScrollSmoother>(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     smootherRef.current = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
@@ -18,11 +18,9 @@ function App() {
       effects: true,
       smoothTouch: 0.1,
     });
-
-    return () => smootherRef.current?.kill();
   }, []);
   return (
-    <SmootherContext.Provider value={smootherRef}>
+    <ScrollRefContext.Provider value={smootherRef}>
       <div id={"smooth-wrapper"}>
         <NavbarWrapper />
         <div id="smooth-content">
@@ -30,7 +28,7 @@ function App() {
         </div>
         <FloatingIconButton icon={LightMode} position="bottom-left" />
       </div>
-    </SmootherContext.Provider>
+    </ScrollRefContext.Provider>
   );
 }
 
