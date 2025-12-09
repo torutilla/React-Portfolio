@@ -1,8 +1,7 @@
-import OutlineButton from "../common/buttons/OutlineButton.tsx";
 import BurgerButton from "../common/buttons/BurgerButton.tsx";
 import { useScroll } from "../../lib/SmootherContext.ts";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useEffect } from "react";
+
 import FillButton from "../common/buttons/FillButton.tsx";
 export type Navigation = {
   heading: string;
