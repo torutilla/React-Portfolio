@@ -34,8 +34,8 @@ function OutlineButton({ onClick, children }: IconButtonProps) {
 
     gsap.fromTo(
       btn,
-      { scale: 0.1, duration: 0.05, ease: "power3.in" },
-      { scale: 1, duration: 0.2 }
+      { scale: 0.1, duration: 0.5, ease: "power3.in" },
+      { scale: 1, duration: 0.1 }
     );
   };
   return (
@@ -45,11 +45,13 @@ function OutlineButton({ onClick, children }: IconButtonProps) {
       className="
       group relative
       overflow-hidden
-      p-2 cursor-pointer
+      p-2 pl-4 pr-4 cursor-pointer
       text-accent
       lg:text-accent 
       hover:text-hover-text
       transition-all duration-400 ease-in-out
+      rounded-2xl
+      font-body font-semibold
 
       before:scale-x-0
       before:absolute before:inset-0 lg:before:scale-x-0
@@ -66,7 +68,7 @@ function OutlineButton({ onClick, children }: IconButtonProps) {
         className="
         absolute pointer-events-none rounded-full 
         bg-accent
-      lg:bg-black/80 w-32 h-32
+      lg:bg-black/30 w-32 h-32
         -translate-x-1/2 -translate-y-1/2 opacity-0
         -z-1"
       ></span>
@@ -77,8 +79,10 @@ function OutlineButton({ onClick, children }: IconButtonProps) {
           y="0"
           width="100%"
           height="100%"
-          rx="0"
-          strokeWidth="2.5"
+          rx="16"
+          strokeWidth="1"
+          vectorEffect="non-scaling-stroke"
+          shapeRendering="geometricPrecision"
           pathLength="100"
           strokeDasharray="100"
           strokeDashoffset="0"

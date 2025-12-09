@@ -15,6 +15,7 @@ function WipeAnimator({
   const tl = useRef<GSAPTimeline>(null);
   const divRef = useRef<HTMLDivElement>(null);
   const spanRef = useRef<HTMLSpanElement>(null);
+  const offset = 10;
   useEffect(() => {
     const div = divRef.current;
     const span = spanRef.current;
@@ -25,10 +26,10 @@ function WipeAnimator({
       const width = rect.width;
       const height = rect.height;
       const dir = {
-        left: { x: -width, y: 0 },
-        top: { x: 0, y: -height },
-        right: { x: width, y: 0 },
-        bottom: { x: 0, y: height },
+        left: { x: -width - offset, y: 0 },
+        top: { x: 0, y: -height - offset },
+        right: { x: width + offset, y: 0 },
+        bottom: { x: 0, y: height + offset },
       }[direction];
       if (tl.current) tl.current.kill();
       tl.current = gsap.timeline();

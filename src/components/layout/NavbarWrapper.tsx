@@ -6,12 +6,11 @@ import { ScrollContext, useScrollRef } from "../../lib/SmootherContext.ts";
 function NavbarWrapper() {
   const links: Navigation[] = [
     { heading: "Home", target: "#Home" },
-    { heading: "Skills", target: "#Skills" },
     { heading: "Projects", target: "#Projects" },
     { heading: "About Me", target: "#AboutMe" },
   ];
   const contactButton: Navigation = {
-    heading: "Contact Me",
+    heading: "Get in Touch",
     target: "#ContactMe",
   };
   const smoother = useScrollRef();
@@ -22,7 +21,7 @@ function NavbarWrapper() {
   return (
     <ScrollContext.Provider value={{ scrollTo }}>
       <Navbar
-        logoSrc="./vite.svg"
+        logoSrc="./Logo.svg"
         navigations={links}
         button={contactButton}
         menuOpen={sidebarOpen}
