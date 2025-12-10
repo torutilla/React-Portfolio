@@ -3,7 +3,7 @@ import NavbarWrapper from "./components/layout/NavbarWrapper.tsx";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
-import { ScrollRefContext } from "./lib/SmootherContext.ts";
+import { ScrollRefContext } from "./hooks/useSmoothScroll.ts";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 function App() {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar, { type Navigation } from "./Navbar.tsx";
 import Sidebar from "./Sidebar.tsx";
-import { ScrollContext, useScrollRef } from "../../lib/SmootherContext.ts";
+import { ScrollContext, useScrollRef } from "../../hooks/useSmoothScroll.ts";
 
 function NavbarWrapper() {
   const links: Navigation[] = [

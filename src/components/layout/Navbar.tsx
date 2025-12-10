@@ -1,7 +1,8 @@
 import BurgerButton from "../common/buttons/BurgerButton.tsx";
-import { useScroll } from "../../lib/SmootherContext.ts";
-import { useEffect } from "react";
-
+import { useScroll } from "../../hooks/useSmoothScroll.ts";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { useScrollDirection } from "../../hooks/useScrollDirection.ts";
 import FillButton from "../common/buttons/FillButton.tsx";
 export type Navigation = {
   heading: string;
@@ -24,28 +25,32 @@ function Navbar({
   setSidebarActive,
 }: NavbarProps) {
   const { scrollTo } = useScroll();
-
+  const navRef = useRef<HTMLElement>(null);
+  const divRef = useRef<HTMLDivElement>(null);
+  const direction = useScrollDirection();
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      // if (window.scrollY > 200) {
-      //   gsap.to(spanRef.current, {
-      //     backdropFilter: "blur(10px)",
-      //     backgroundColor: "rgb(255 255 255 / 30%)",
-      //     ease: "expo.in",
-      //   });
-      // }
-    });
-  }, []);
+    const div = divRef.current;
+    const nav = navRef.current;
+    if (!div || !nav) return;
+    if (direction == "up") {
+      gsap.to(nav, { y: 0 });
+    } else {
+      gsap.to(nav, { y: -nav.clientHeight });
+    }
+  }, [direction]);
   return (
-    <nav className="fixed p-4 flex w-full self-center justify-between items-center z-50 pl-5 pr-5">
+    <nav
+      ref={navRef}
+      className="fixed p-4 flex w-full self-center justify-between items-center z-50 pl-5 pr-5"
+    >
       <a href="#" className="flex leading-none">
         <img src={logoSrc} alt="" />
       </a>
       <div
+        ref={divRef}
         className="hidden md:flex justify-around w-1/2 
       lg:w-1/2 p-3 self-center 
-      border rounded-4xl
-    bg-gray-300/15 backdrop-blur-sm border-gray-400/50"
+      rounded-4xl"
       >
         <ul className="hidden gap-6 md:flex">
           {navigations.map((element) => (

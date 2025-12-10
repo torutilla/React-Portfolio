@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { type Navigation } from "./../layout/Navbar.tsx";
-import { useScroll } from "../../lib/SmootherContext.ts";
+import { useScroll } from "../../hooks/useSmoothScroll.ts";
 type SidebarProps = {
   isOpen: boolean;
   navigations: Navigation[];
