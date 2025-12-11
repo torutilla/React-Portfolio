@@ -1,5 +1,6 @@
 import { useRef, type MouseEventHandler } from "react";
 import gsap from "gsap";
+import useRippleAnimation from "../../../hooks/useRippleAnimation.ts";
 type IconButtonProps = {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
@@ -7,31 +8,12 @@ type IconButtonProps = {
 
 function OutlineButton({ onClick, children }: IconButtonProps) {
   const btnRef = useRef<HTMLButtonElement>(null);
-  const spanRef = useRef<HTMLSpanElement>(null);
+  const handleRipple = useRippleAnimation(btnRef);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    if (onClick) onClick(e);
     const btn = btnRef.current;
-    const span = spanRef.current;
-
-    if (!btn || !span) return;
-
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    span.style.left = `${x}px`;
-    span.style.top = `${y}px`;
-
-    gsap.killTweensOf(span);
-    gsap.set(span, { scale: 0, opacity: 1 });
-
-    gsap.to(span, {
-      scale: 4,
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-    });
-
+    if (!btn) return;
+    if (onClick) onClick(e);
+    handleRipple(e);
     gsap.fromTo(
       btn,
       { scale: 0.1, duration: 0.5, ease: "power3.in" },
@@ -63,15 +45,6 @@ function OutlineButton({ onClick, children }: IconButtonProps) {
       before:ease-in-out before:-z-1
     "
     >
-      <span
-        ref={spanRef}
-        className="
-        absolute pointer-events-none rounded-full 
-        bg-accent
-      lg:bg-black/30 w-32 h-32
-        -translate-x-1/2 -translate-y-1/2 opacity-0
-        -z-1"
-      ></span>
       {children}
       <svg className="absolute inset-0 w-full h-full" fill="none">
         <rect
