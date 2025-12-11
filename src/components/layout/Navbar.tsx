@@ -41,7 +41,7 @@ function Navbar({
   return (
     <nav
       ref={navRef}
-      className="fixed p-4 flex w-full self-center justify-between items-center z-50 pl-5 pr-5"
+      className="fixed p-4 flex w-full self-center justify-between items-center top-0 z-50 pl-5 pr-5"
     >
       <a href="#" className="flex leading-none">
         <img src={logoSrc} alt="" />
