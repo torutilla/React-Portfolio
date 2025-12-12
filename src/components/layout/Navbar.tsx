@@ -27,7 +27,7 @@ function Navbar({
   const { scrollTo } = useScroll();
   const navRef = useRef<HTMLElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
-  const scrollTreshold = 5;
+  const scrollTreshold = 10;
   const { direction: scrollDir, currentScroll } =
     useScrollDirection(scrollTreshold);
   useEffect(() => {
@@ -54,8 +54,9 @@ function Navbar({
 
       gsap.to(nav, {
         backgroundColor: "rgba(100, 100, 100, 0.5)",
-        border: "1px",
-        borderColor: "white",
+        border: "1px solid rgba(100, 100, 100, 1)",
+        ease: "power1.in",
+        duration: 0.3,
       });
     }
   }, [scrollDir, currentScroll]);
