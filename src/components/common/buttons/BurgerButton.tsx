@@ -42,7 +42,7 @@ function BurgerButton({ onClick, isActive }: BurgerButtonProps) {
   return (
     <button
       onClick={handleOnclick}
-      className="group w-9 flex flex-col gap-1 justify-center p-2 md:hidden isolate"
+      className="group w-9 flex flex-col gap-1 justify-center p-2"
     >
       <span ref={topRef} className="w-full h-0.5 bg-gray-400"></span>
       <span ref={midRef} className="w-full h-0.5 bg-gray-400"></span>

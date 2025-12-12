@@ -26,14 +26,12 @@ function Navbar({
 }: NavbarProps) {
   const { scrollTo } = useScroll();
   const navRef = useRef<HTMLElement>(null);
-  const divRef = useRef<HTMLDivElement>(null);
   const scrollTreshold = 10;
   const { direction: scrollDir, currentScroll } =
     useScrollDirection(scrollTreshold);
   useEffect(() => {
-    const div = divRef.current;
     const nav = navRef.current;
-    if (!div || !nav) return;
+    if (!nav) return;
     gsap.killTweensOf(nav);
     if (currentScroll < scrollTreshold) {
       gsap.to(nav, {
@@ -63,36 +61,34 @@ function Navbar({
   return (
     <nav
       ref={navRef}
-      className="fixed p-4 px-5 flex self-center justify-between items-center top-2 right-2 left-2 z-50 rounded-full backdrop-blur-sm"
+      className="fixed p-2.5 px-5 grid grid-cols-2 md:grid-cols-3 justify-between items-center top-2 right-2 left-2 z-50 rounded-full backdrop-blur-sm"
     >
-      <a href="#" className="flex leading-none">
+      <a href="#" className="flex leading-none size-9">
         <img src={logoSrc} alt="logo" />
       </a>
-      <div
-        ref={divRef}
-        className="hidden md:flex justify-around w-1/2 
-      lg:w-1/2 p-3 self-center 
-      rounded-4xl"
-      >
-        <ul className="hidden gap-6 md:flex">
-          {navigations.map((element) => (
-            <li key={element.heading} className="self-center hidden sm:flex">
-              <a
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollTo(element.target);
-                }}
-                href={element.target}
-                className="hover:text-accent transition duration-100 ease-in-out text-sm text-text font-title"
-              >
-                {element.heading}
-              </a>
-            </li>
-          ))}
-        </ul>
+
+      <ul className="hidden gap-6 md:flex justify-center">
+        {navigations.map((element) => (
+          <li key={element.heading} className="hidden sm:flex text-nowrap">
+            <a
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo(element.target);
+              }}
+              href={element.target}
+              className="hover:text-accent transition duration-100 ease-in-out text-sm text-text font-title"
+            >
+              {element.heading}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div className="hidden justify-end md:flex">
+        <FillButton>{button.heading}</FillButton>
       </div>
-      <FillButton>{button.heading}</FillButton>
-      <BurgerButton onClick={setSidebarActive} isActive={menuOpen} />
+      <div className="flex justify-end md:hidden">
+        <BurgerButton onClick={setSidebarActive} isActive={menuOpen} />
+      </div>
     </nav>
   );
 }
