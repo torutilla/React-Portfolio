@@ -34,7 +34,11 @@ function WipeAnimator({
       if (tl.current) tl.current.kill();
       tl.current = gsap.timeline();
       tl.current
-        .fromTo(span, { x: dir.x, y: dir.y }, { x: 0, y: 0 })
+        .fromTo(
+          span,
+          { x: dir.x, y: dir.y, scrollTrigger: span },
+          { x: 0, y: 0 }
+        )
         .to(span, { x: -dir.x, y: -dir.y, duration: duration })
         .fromTo(
           div,
