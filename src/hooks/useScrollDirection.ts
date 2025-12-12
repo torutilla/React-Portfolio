@@ -13,8 +13,6 @@ export function useScrollDirection(threshold: number = 10){
             const prev = prevScrollRef.current;
             const diff = current - prev;
 
-
-            console.log(current);
             if(Math.abs(diff) > threshold){
                 const newDirection = diff > 0 ? "down": "up";
                 
