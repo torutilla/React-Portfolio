@@ -27,24 +27,45 @@ function Navbar({
   const { scrollTo } = useScroll();
   const navRef = useRef<HTMLElement>(null);
   const divRef = useRef<HTMLDivElement>(null);
-  const direction = useScrollDirection();
+  const scrollTreshold = 5;
+  const { direction: scrollDir, currentScroll } =
+    useScrollDirection(scrollTreshold);
   useEffect(() => {
     const div = divRef.current;
     const nav = navRef.current;
     if (!div || !nav) return;
-    if (direction == "up") {
-      gsap.to(nav, { y: 0 });
-    } else {
-      gsap.to(nav, { y: -nav.clientHeight });
+    gsap.killTweensOf(nav);
+    if (currentScroll < scrollTreshold) {
+      gsap.to(nav, {
+        backgroundColor: "rgba(100, 100, 100, 0)",
+        border: "0px",
+        duration: 0.3,
+        ease: "power2.out",
+      });
     }
-  }, [direction]);
+    if (scrollDir == "up") {
+      gsap.to(nav, { y: 0, duration: 0.4, ease: "power3.out" });
+    } else {
+      gsap.to(nav, {
+        y: -nav.offsetHeight - 10,
+        duration: 0.3,
+        ease: "power3.in",
+      });
+
+      gsap.to(nav, {
+        backgroundColor: "rgba(100, 100, 100, 0.5)",
+        border: "1px",
+        borderColor: "white",
+      });
+    }
+  }, [scrollDir, currentScroll]);
   return (
     <nav
       ref={navRef}
-      className="fixed p-4 flex w-full self-center justify-between items-center top-0 z-50 pl-5 pr-5"
+      className="fixed p-4 px-5 flex self-center justify-between items-center top-2 right-2 left-2 z-50 rounded-full backdrop-blur-sm"
     >
       <a href="#" className="flex leading-none">
-        <img src={logoSrc} alt="" />
+        <img src={logoSrc} alt="logo" />
       </a>
       <div
         ref={divRef}
