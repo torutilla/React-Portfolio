@@ -15,7 +15,7 @@ function Hero() {
           <HeroTitle text="CHRISTIAN TORRES" />
         </WipeAnimator>
         <WipeAnimator direction="left">
-          <p className="font-body font-extralight text-text xs:text-xl md:text-3xl lg:text-4xl">
+          <p className="font-body font-extralight text-text text-hero-subtitle">
             DEVELOPER & GRAPHIC DESIGNER
           </p>
         </WipeAnimator>

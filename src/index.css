@@ -120,6 +120,8 @@
   --breakpoint-xs: 480px;
 
   --text-md: 1rem;
+  --text-hero: clamp(0.8rem, 3.5vw + 0.6rem, 6rem);
+  --text-hero-subtitle: clamp(0.7rem, 2vw + 0.5rem, 3rem);
 }
 
 ::-webkit-scrollbar {

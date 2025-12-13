@@ -9,7 +9,7 @@ function HeroTitle({ text }: ShimmerTextProps) {
         data-text={text}
         className={`
           text-text
-          ml-4 mr-4 relative font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+          ml-4 mr-4 relative font-extrabold text-hero whitespace-nowrap leading-tight
         font-title
         after:bg-linear-to-r after:from-transparent 
         after:via-black/70 after:text-transparent
