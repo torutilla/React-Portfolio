@@ -27,20 +27,28 @@ function Navbar({
   const { scrollTo } = useScroll();
   const navRef = useRef<HTMLElement>(null);
   const scrollTreshold = 10;
-  const { direction: scrollDir, currentScroll } =
-    useScrollDirection(scrollTreshold);
+  const { direction: scrollDir } = useScrollDirection(scrollTreshold);
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
-    gsap.killTweensOf(nav);
-    if (currentScroll < scrollTreshold) {
-      gsap.to(nav, {
-        backgroundColor: "rgba(100, 100, 100, 0)",
-        border: "0px",
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
+
+    gsap.to(nav, {
+      backgroundColor: "rgba(100, 100, 100, 0.5)",
+      border: "1px solid rgba(100, 100, 100, 1)",
+      scrollTrigger: {
+        trigger: "#Home",
+        start: "top top",
+        end: "bottom top",
+        onLeaveBack: () =>
+          gsap.to(nav, {
+            backgroundColor: "rgba(100, 100, 100, 0)",
+            border: "0px",
+            duration: 0.3,
+          }),
+      },
+    });
+    // if (currentScroll < scrollTreshold) {
+    // }
     if (scrollDir == "up") {
       gsap.to(nav, { y: 0, duration: 0.4, ease: "power3.out" });
     } else {
@@ -49,15 +57,8 @@ function Navbar({
         duration: 0.3,
         ease: "power3.in",
       });
-
-      gsap.to(nav, {
-        backgroundColor: "rgba(100, 100, 100, 0.5)",
-        border: "1px solid rgba(100, 100, 100, 1)",
-        ease: "power1.in",
-        duration: 0.3,
-      });
     }
-  }, [scrollDir, currentScroll]);
+  }, [scrollDir]);
   return (
     <nav
       ref={navRef}
