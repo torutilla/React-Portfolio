@@ -1,21 +1,27 @@
 import { useState } from "react";
-import Navbar, { type Navigation } from "./Navbar.tsx";
+import Navbar from "./Navbar.tsx";
 import Sidebar from "./Sidebar.tsx";
 import { ScrollContext, useScrollRef } from "../../hooks/useSmoothScroll.ts";
 
+export type Navigation = {
+  heading: string;
+  target: string;
+};
+export const links: Navigation[] = [
+  { heading: "Home", target: "Home" },
+  { heading: "Projects", target: "Projects" },
+  { heading: "About Me", target: "About" },
+];
+export const contactButton: Navigation = {
+  heading: "Get in Touch",
+  target: "contact",
+};
 function NavbarWrapper() {
-  const links: Navigation[] = [
-    { heading: "Home", target: "#Home" },
-    { heading: "Projects", target: "#Projects" },
-    { heading: "About Me", target: "#AboutMe" },
-  ];
-  const contactButton: Navigation = {
-    heading: "Get in Touch",
-    target: "#ContactMe",
-  };
   const smoother = useScrollRef();
+
   const scrollTo = (id: string) => {
-    smoother?.current?.scrollTo(id, true, "top top");
+    const element = document.getElementById(id);
+    smoother?.current?.scrollTo(element?.offsetTop!, true, "top top");
   };
   const [sidebarOpen, setSidebar] = useState(false);
   return (

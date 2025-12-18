@@ -1,14 +1,10 @@
 import BurgerButton from "../common/buttons/BurgerButton.tsx";
 import { useScroll } from "../../hooks/useSmoothScroll.ts";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { useScrollDirection } from "../../hooks/useScrollDirection.ts";
 import FillButton from "../common/buttons/FillButton.tsx";
-export type Navigation = {
-  heading: string;
-  target: string;
-};
-
+import { type Navigation } from "./NavbarWrapper.tsx";
 type NavbarProps = {
   logoSrc: string;
   navigations: Navigation[];
@@ -28,23 +24,25 @@ function Navbar({
   const navRef = useRef<HTMLElement>(null);
   const scrollTreshold = 10;
   const { direction: scrollDir } = useScrollDirection(scrollTreshold);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
 
     gsap.to(nav, {
       backgroundColor: "rgba(100, 100, 100, 0.5)",
       border: "1px solid rgba(100, 100, 100, 1)",
+      duration: 0.3,
       scrollTrigger: {
         trigger: "#Home",
         start: "top top",
         end: "bottom top",
-        onLeaveBack: () =>
+        onLeaveBack: () => {
           gsap.to(nav, {
             backgroundColor: "rgba(100, 100, 100, 0)",
             border: "0px",
             duration: 0.3,
-          }),
+          });
+        },
       },
     });
     // if (currentScroll < scrollTreshold) {
@@ -70,13 +68,15 @@ function Navbar({
 
       <ul className="hidden gap-6 md:flex justify-center">
         {navigations.map((element) => (
-          <li key={element.heading} className="hidden sm:flex text-nowrap">
+          <li
+            key={element.heading}
+            className="hidden sm:flex text-nowrap cursor-pointer"
+          >
             <a
               onClick={(e) => {
                 e.preventDefault();
                 scrollTo(element.target);
               }}
-              href={element.target}
               className="hover:text-accent transition duration-100 ease-in-out text-sm text-text font-title"
             >
               {element.heading}
