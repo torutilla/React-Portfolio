@@ -22,9 +22,8 @@ function WipeAnimator({
     if (!div || !span) return;
 
     const update = () => {
-      const rect = div.getBoundingClientRect();
-      const width = rect.width;
-      const height = rect.height;
+      const width = div.offsetWidth;
+      const height = div.offsetHeight;
       const dir = {
         left: { x: -width - offset, y: 0 },
         top: { x: 0, y: -height - offset },
