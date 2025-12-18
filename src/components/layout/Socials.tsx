@@ -5,7 +5,7 @@ import gsap from "gsap";
 
 function Socials() {
   const icons = [GitHub, Email, LinkedIn];
-  const iconRefs = icons.map((_, i) => useRef<HTMLButtonElement>(null));
+  const iconRefs = icons.map((_) => useRef<HTMLButtonElement>(null));
   const divRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const tl = gsap.timeline({
