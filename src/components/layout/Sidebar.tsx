@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import { type Navigation } from "./../layout/Navbar.tsx";
+import { type Navigation } from "./NavbarWrapper.tsx";
 import { useScroll } from "../../hooks/useSmoothScroll.ts";
 type SidebarProps = {
   isOpen: boolean;
@@ -29,7 +29,6 @@ function Sidebar({ isOpen, navigations, onClose }: SidebarProps) {
             <li key={nav.heading} className="flex p-1">
               <a
                 className="text-lg sm:text-xl"
-                href={nav.target}
                 onClick={(e) => {
                   e.preventDefault();
                   onClose();
