@@ -1,7 +1,7 @@
 function AboutMe() {
   return (
-    <div id="AboutMe" className="relative h-dvh bg-background">
-      <div className="bg-accent h-full rounded-t-[128px]"></div>
+    <div id="About" className="relative h-dvh bg-background">
+      <p className="font-title text-hero text-text">About Me</p>
     </div>
   );
 }
