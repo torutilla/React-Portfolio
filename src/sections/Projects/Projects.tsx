@@ -14,7 +14,6 @@ function Projects() {
           start: "top bottom",
           end: "top center",
           scrub: true,
-          markers: true,
         },
       }
     );

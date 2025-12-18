@@ -8,24 +8,32 @@ function Socials() {
   const iconRefs = icons.map((_, i) => useRef<HTMLButtonElement>(null));
   const divRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
-    iconRefs.forEach((ref) => {
-      gsap.to(ref.current, {
-        y: 100,
-        scrollTrigger: {
-          trigger: "#Home",
-          start: "bottom center",
-          end: "top top",
-          markers: true,
-          toggleActions: "play none play reverse",
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#Home",
+        start: "bottom center",
+        end: "top top",
+        toggleActions: "play none play reverse",
+      },
+    });
+    iconRefs.forEach((icon, i) => {
+      tl.to(
+        icon.current,
+        {
+          x: 100,
+          opacity: 0,
+          duration: 0.2,
+          ease: "circ.in",
         },
-      });
+        i * 0.1
+      );
     });
   }, []);
   return (
     <div
       ref={divRef}
       id="socials-container"
-      className="fixed right-6 bottom-10  h-auto flex gap-sm"
+      className="fixed right-6 bottom-10  h-auto flex gap-sm overflow-hidden p-1"
     >
       {icons.map((Icon, i) => (
         <FillButton key={i} variant="icon" ref={iconRefs[i]}>
