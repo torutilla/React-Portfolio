@@ -7,7 +7,6 @@ export default function useRippleAnimation(element: React.RefObject<HTMLElement 
         const x = event.clientX - rect.left;
         const y = event.clientY - rect.top;
 
-        console.log(x, y);
 
         const span = document.createElement('span');
         

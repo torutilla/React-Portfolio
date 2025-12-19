@@ -40,7 +40,7 @@ function Navbar({
           gsap.to(nav, {
             backgroundColor: "rgba(100, 100, 100, 0)",
             border: "0px",
-            duration: 0.3,
+            duration: 0.6,
           });
         },
       },
@@ -62,7 +62,7 @@ function Navbar({
       ref={navRef}
       className="fixed p-2.5 px-5 grid grid-cols-2 md:grid-cols-3 justify-between items-center top-2 right-2 left-2 z-50 rounded-full backdrop-blur-sm"
     >
-      <a href="#" className="flex leading-none size-9">
+      <a href="#" className="flex leading-none size-7 md:size-9">
         <img src={logoSrc} alt="logo" />
       </a>
 

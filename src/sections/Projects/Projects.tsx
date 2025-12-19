@@ -6,13 +6,13 @@ function Projects() {
   useLayoutEffect(() => {
     gsap.fromTo(
       "#Projects",
-      { borderRadius: "300px" },
+      { borderRadius: window.innerWidth >= 768 ? "300px" : "80px" },
       {
         borderRadius: "0px",
         scrollTrigger: {
           trigger: "#Projects",
-          start: "top bottom",
-          end: "top center",
+          start: "top center",
+          end: "top top",
           scrub: true,
         },
       }
@@ -35,7 +35,7 @@ function Projects() {
     <div
       id="Projects"
       ref={ref}
-      className="relative w-full h-dvh bg-gray-400 flex flex-col items-center pt-5 z-20 overflow-hidden"
+      className="relative w-full h-[200dvh] bg-gray-400 flex flex-col items-center pt-5 z-20 overflow-hidden md"
     >
       <p className="font-title text-text text-title">Projects</p>
       <div

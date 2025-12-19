@@ -28,7 +28,7 @@ function Sidebar({ isOpen, navigations, onClose }: SidebarProps) {
           {navigations.map((nav) => (
             <li key={nav.heading} className="flex p-1">
               <a
-                className="text-lg sm:text-xl"
+                className="text-lg sm:text-xl text-text font-title"
                 onClick={(e) => {
                   e.preventDefault();
                   onClose();
