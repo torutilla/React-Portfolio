@@ -5,12 +5,12 @@ type FillButtonProps = {
   ref?: React.RefObject<HTMLButtonElement | null>;
   children?: React.ReactNode;
   variant?: "default" | "icon";
+  onclick?: () => void;
 };
-function FillButton({ children, variant, ref }: FillButtonProps) {
+function FillButton({ children, variant, ref, onclick }: FillButtonProps) {
   const variantStyle =
     variant == "icon" ? "rounded-full" : "rounded-2xl pl-4 pr-4";
   const btnRef = ref ? ref : useRef<HTMLButtonElement>(null);
-  const ripple = useRippleAnimation(btnRef);
   const onMouseEnter = () => {
     // gsap.to(btnRef.current, { y: -2, duration: 0.2, ease: "bounce.in" });
   };
@@ -23,7 +23,9 @@ function FillButton({ children, variant, ref }: FillButtonProps) {
       { y: -1, ease: "circ.in" },
       { y: 0, duration: 0.3 }
     );
+    const ripple = useRippleAnimation(btnRef.current);
     ripple(e);
+    if (onclick) onclick();
   };
   return (
     <button

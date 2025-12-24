@@ -1,0 +1,43 @@
+import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+function Background() {
+  return (
+    <div className="absolute w-dvw h-dvh">
+      <ShaderGradientCanvas>
+        <ShaderGradient
+          animate="on"
+          brightness={1.1}
+          cAzimuthAngle={180}
+          cDistance={3.6}
+          cPolarAngle={90}
+          color1="#271a1c"
+          color2="#000000"
+          color3="#0e1010"
+          envPreset="city"
+          grain="off"
+          lightType="3d"
+          positionX={0}
+          positionY={0}
+          positionZ={0}
+          range="disabled"
+          rangeEnd={40}
+          rangeStart={0}
+          reflection={0.1}
+          rotationX={0}
+          rotationY={10}
+          rotationZ={50}
+          shader="defaults"
+          type="plane"
+          uAmplitude={1}
+          uDensity={1.3}
+          uFrequency={5.5}
+          uSpeed={0.4}
+          uStrength={4}
+          uTime={0}
+          wireframe={false}
+        />
+      </ShaderGradientCanvas>
+    </div>
+  );
+}
+
+export default Background;

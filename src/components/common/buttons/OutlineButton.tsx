@@ -8,11 +8,11 @@ type IconButtonProps = {
 
 function OutlineButton({ onClick, children }: IconButtonProps) {
   const btnRef = useRef<HTMLButtonElement>(null);
-  const handleRipple = useRippleAnimation(btnRef);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = btnRef.current;
     if (!btn) return;
     if (onClick) onClick(e);
+    const handleRipple = useRippleAnimation(btnRef.current);
     handleRipple(e);
     gsap.fromTo(
       btn,

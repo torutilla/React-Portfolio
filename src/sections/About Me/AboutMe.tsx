@@ -1,7 +1,12 @@
+import TitleText from "../../components/common/texts/TitleText.tsx";
+
 function AboutMe() {
   return (
-    <div id="About" className="relative h-dvh bg-background">
-      <p className="font-title text-hero text-text">About Me</p>
+    <div
+      id="About"
+      className="relative h-dvh bg-background flex justify-center"
+    >
+      <TitleText text="About Me" triggerTarget="#About" />
     </div>
   );
 }

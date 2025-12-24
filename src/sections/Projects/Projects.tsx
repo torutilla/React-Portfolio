@@ -1,16 +1,18 @@
 import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
+import TitleText from "../../components/common/texts/TitleText.tsx";
 
 function Projects() {
   const ref = useRef<HTMLDivElement>(null);
+  const id = "#Projects";
   useLayoutEffect(() => {
     gsap.fromTo(
-      "#Projects",
-      { borderRadius: window.innerWidth >= 768 ? "300px" : "80px" },
+      id,
+      { borderRadius: window.innerWidth >= 768 ? "300px" : "40px" },
       {
         borderRadius: "0px",
         scrollTrigger: {
-          trigger: "#Projects",
+          trigger: id,
           start: "top center",
           end: "top top",
           scrub: true,
@@ -23,7 +25,7 @@ function Projects() {
       y: () => -(inner!.scrollHeight - window.innerHeight),
       ease: "none",
       scrollTrigger: {
-        trigger: "#Projects",
+        trigger: id,
         start: "top top",
         end: () => "+=" + (inner!.scrollHeight - window.innerHeight),
         scrub: true,
@@ -35,9 +37,9 @@ function Projects() {
     <div
       id="Projects"
       ref={ref}
-      className="relative w-full h-[200dvh] bg-gray-400 flex flex-col items-center pt-5 z-20 overflow-hidden md"
+      className="relative w-full h-[200dvh]  flex flex-col items-center pt-5 z-20 overflow-hidden md"
     >
-      <p className="font-title text-text text-title">Projects</p>
+      <TitleText text="PROJECTS" triggerTarget={id} />
       <div
         id="projects-inner"
         className="relative will-change-transform min-h-[200dvh]"

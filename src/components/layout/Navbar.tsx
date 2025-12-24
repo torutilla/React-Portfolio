@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useScrollDirection } from "../../hooks/useScrollDirection.ts";
 import FillButton from "../common/buttons/FillButton.tsx";
 import { type Navigation } from "./NavbarWrapper.tsx";
+import WipeAnimator from "../animator/WipeAnimator.tsx";
 type NavbarProps = {
   logoSrc: string;
   navigations: Navigation[];
@@ -72,15 +73,17 @@ function Navbar({
             key={element.heading}
             className="hidden sm:flex text-nowrap cursor-pointer"
           >
-            <a
-              onClick={(e) => {
-                e.preventDefault();
-                scrollTo(element.target);
-              }}
-              className="hover:text-accent transition duration-100 ease-in-out text-sm text-text font-title"
-            >
-              {element.heading}
-            </a>
+            <WipeAnimator direction="bottom">
+              <a
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(element.target);
+                }}
+                className="hover:text-accent transition duration-100 ease-in-out text-sm text-text font-title"
+              >
+                {element.heading}
+              </a>
+            </WipeAnimator>
           </li>
         ))}
       </ul>

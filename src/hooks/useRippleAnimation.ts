@@ -1,7 +1,7 @@
 import gsap from "gsap"
-export default function useRippleAnimation(element: React.RefObject<HTMLElement | null>){
+export default function useRippleAnimation(element: HTMLElement | null, speed = 1.5){
     return (event: React.MouseEvent) =>{
-        const el = element.current;
+        const el = element;
         if (!el) return;
         const rect = el.getBoundingClientRect();
         const x = event.clientX - rect.left;
@@ -22,7 +22,7 @@ export default function useRippleAnimation(element: React.RefObject<HTMLElement 
         gsap.to(span, {
           scale: 4,
           opacity: 0,
-          duration: 1.5,
+          duration: speed,
           ease: "power2.out",
         });
     }
