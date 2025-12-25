@@ -1,5 +1,5 @@
-import gsap from "gsap";
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
+import useSlideAnimation from "../../../hooks/useSlideAnimation.ts";
 
 type TitleTextProps = {
   text: string;
@@ -7,24 +7,8 @@ type TitleTextProps = {
 };
 function TitleText({ text, triggerTarget }: TitleTextProps) {
   const ref = useRef<HTMLParagraphElement>(null);
-  useLayoutEffect(() => {
-    const p = ref.current;
-    if (!p) return;
-    gsap.fromTo(
-      p,
-      { y: p?.offsetHeight },
-      {
-        y: 0,
-        duration: 0.3,
-        scrollTrigger: {
-          trigger: triggerTarget,
-          start: "top bottom-=20",
-          end: "top top",
-          scrub: true,
-        },
-      }
-    );
-  }, [triggerTarget]);
+  useSlideAnimation(triggerTarget, ref);
+
   return (
     <div>
       <div className="overflow-hidden">

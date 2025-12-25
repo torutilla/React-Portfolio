@@ -33,7 +33,7 @@ function Socials() {
     <div
       ref={divRef}
       id="socials-container"
-      className="fixed right-6 bottom-10  h-auto flex gap-sm overflow-hidden p-1"
+      className="fixed right-6 bottom-10  h-auto flex gap-md overflow-hidden p-1"
     >
       {icons.map((Icon, i) => (
         <FillButton key={i} variant="icon" ref={iconRefs[i]}>

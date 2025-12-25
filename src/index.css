@@ -37,12 +37,9 @@
   --hover-text: #111111;
   --link-text: #82aaff;
 
-  --accent: #e85c5c;
-  --accent-light: #ff7b7b;
-  --accent-dark: #b03a3a;
-
+  --accent: #1aa879;
+  --accent-background: #184e3c;
   --border: #f1f1f1;
-  --border-light: #444444;
   --border-hover: #e85c5c;
 
   --button-background: var(--accent);
@@ -85,11 +82,8 @@
   --color-link-text: var(--link-text);
 
   --color-accent: var(--accent);
-  --color-accent-light: var(--accent-light);
-  --color-accent-dark: var(--accent-dark);
 
   --color-border: var(--border);
-  --color-border-light: var(--border-light);
   --color-border-hover: var(--border-hover);
 
   --color-button-background: var(--button-background);

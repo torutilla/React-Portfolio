@@ -1,10 +1,10 @@
 import Home from "./pages/Home.tsx";
-import NavbarWrapper from "./components/layout/NavbarWrapper.tsx";
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
 import { ScrollRefContext } from "./hooks/useSmoothScroll.ts";
 import Socials from "./components/layout/Socials.tsx";
+import Background from "./components/Background.tsx";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 function App() {
@@ -21,8 +21,9 @@ function App() {
   }, []);
   return (
     <ScrollRefContext.Provider value={smootherRef}>
+      <Background />
       <div id={"smooth-wrapper"}>
-        <NavbarWrapper />
+        {/* <NavbarWrapper /> */}
         <div id="smooth-content">
           <Home />
         </div>

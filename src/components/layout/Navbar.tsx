@@ -30,7 +30,7 @@ function Navbar({
     if (!nav) return;
 
     gsap.to(nav, {
-      backgroundColor: "rgba(100, 100, 100, 0.5)",
+      backgroundColor: "rgba(100, 100, 100, 0.3)",
       border: "1px solid rgba(100, 100, 100, 1)",
       duration: 0.3,
       scrollTrigger: {

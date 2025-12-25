@@ -1,7 +1,8 @@
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
 function Background() {
+  const root = getComputedStyle(document.documentElement);
   return (
-    <div className="absolute w-dvw h-dvh">
+    <div className="fixed w-dvw h-dvh">
       <ShaderGradientCanvas>
         <ShaderGradient
           animate="on"
@@ -9,8 +10,8 @@ function Background() {
           cAzimuthAngle={180}
           cDistance={3.6}
           cPolarAngle={90}
-          color1="#271a1c"
-          color2="#000000"
+          color1="#000000"
+          color2={root.getPropertyValue("--accent-background").trim()}
           color3="#0e1010"
           envPreset="city"
           grain="off"
@@ -18,7 +19,7 @@ function Background() {
           positionX={0}
           positionY={0}
           positionZ={0}
-          range="disabled"
+          range="enabled"
           rangeEnd={40}
           rangeStart={0}
           reflection={0.1}
