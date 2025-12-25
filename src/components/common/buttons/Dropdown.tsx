@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import useRippleAnimation from "../../../hooks/useRippleAnimation.ts";
 import FillButton from "./FillButton.tsx";
 import gsap from "gsap";
