@@ -4,7 +4,14 @@ import { Email, GitHub, LinkedIn } from "@mui/icons-material";
 import gsap from "gsap";
 
 function Socials() {
-  const icons = [GitHub, Email, LinkedIn];
+  const icons = [
+    { Icon: GitHub, link: "https://github.com/torutilla" },
+    { Icon: Email, link: "mailto:christiantorres0418@gmail.com" },
+    {
+      Icon: LinkedIn,
+      link: "https://www.linkedin.com/in/christian-torres-7b45b4243/",
+    },
+  ];
   const iconRefs = icons.map((_) => useRef<HTMLButtonElement>(null));
   const divRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
@@ -35,8 +42,13 @@ function Socials() {
       id="socials-container"
       className="fixed right-6 bottom-10  h-auto flex gap-md overflow-hidden p-1"
     >
-      {icons.map((Icon, i) => (
-        <FillButton key={i} variant="icon" ref={iconRefs[i]}>
+      {icons.map(({ Icon, link }, i) => (
+        <FillButton
+          key={i}
+          variant="icon"
+          ref={iconRefs[i]}
+          onclick={() => window.open(link, "_blank")}
+        >
           <Icon />
         </FillButton>
       ))}

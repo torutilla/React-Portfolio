@@ -39,6 +39,7 @@
 
   --accent: #1aa879;
   --accent-background: #184e3c;
+  --background-highlight: #608669;
   --border: #f1f1f1;
   --border-hover: #e85c5c;
 
@@ -116,7 +117,7 @@
   --text-md: 1rem;
   --text-hero: clamp(0.8rem, 3.5vw + 0.6rem, 6rem);
   --text-hero-subtitle: clamp(0.7rem, 2vw + 0.5rem, 3rem);
-  --text-title: clamp(0.8rem, 3vw + 0.2rem, 5rem);
+  --text-title: clamp(1.5rem, 3vw + 0.2rem, 5rem);
 }
 
 ::-webkit-scrollbar {

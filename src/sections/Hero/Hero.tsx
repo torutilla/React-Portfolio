@@ -9,12 +9,19 @@ function Hero() {
     {
       heading: "View Resume",
       subtitle: "Download PDF resume",
-      onClick: () => {},
+      onClick: () => {
+        window.open("src/assets/files/Resume.pdf", "_blank");
+      },
     },
     {
       heading: "Interactive Resume",
-      subtitle: "Walkthrough my game-based resume",
-      onClick: () => {},
+      subtitle: "Walkthrough my game-style resume",
+      onClick: () => {
+        window.open(
+          "https://christian-torres-interactive-resume.vercel.app/",
+          "_blank"
+        );
+      },
     },
   ];
   const logoSrc = "./Logo.svg";
@@ -27,7 +34,7 @@ function Hero() {
         <a href="#" className="flex leading-none size-7 md:size-9">
           <img src={logoSrc} alt="logo" />
         </a>
-        <div className="hidden justify-end md:flex">
+        <div className=" justify-end flex">
           <FillButton>Get in Touch</FillButton>
         </div>
       </div>
@@ -41,9 +48,8 @@ function Hero() {
           </p>
         </WipeAnimator>
       </div>
-      <div className="call-to-action flex gap-2 justify-center">
-        <Dropdown content="Resume" items={buttonItems} />
-      </div>
+
+      <Dropdown content="Resume" items={buttonItems} />
     </div>
   );
 }

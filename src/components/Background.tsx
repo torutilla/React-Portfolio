@@ -10,9 +10,9 @@ function Background() {
           cAzimuthAngle={180}
           cDistance={3.6}
           cPolarAngle={90}
-          color1="#000000"
+          color1={root.getPropertyValue("--accent-background").trim()}
           color2={root.getPropertyValue("--accent-background").trim()}
-          color3="#0e1010"
+          color3={root.getPropertyValue("--background-highlight").trim()}
           envPreset="city"
           grain="off"
           lightType="3d"
@@ -31,7 +31,7 @@ function Background() {
           uAmplitude={1}
           uDensity={1.3}
           uFrequency={5.5}
-          uSpeed={0.4}
+          uSpeed={0.3}
           uStrength={4}
           uTime={0}
           wireframe={false}

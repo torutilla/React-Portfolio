@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import useRippleAnimation from "../../../hooks/useRippleAnimation.ts";
 import FillButton from "./FillButton.tsx";
 import gsap from "gsap";
@@ -46,15 +46,14 @@ function Dropdown({ content, items }: DropdownProps) {
     setOpen((open) => !open);
   };
   return (
-    <div className="relative flex flex-col gap-3 w-full">
+    <div className="relative flex flex-col gap-3 items-center">
       <FillButton onclick={handleButtonClick}>{content}</FillButton>
       <div
         ref={dropdownRef}
-        className="top-full mt-2 absolute border border-white rounded-2xl overflow-clip flex flex-col w-56 scale-y-0 origin-top"
+        className="top-full mt-2 absolute border border-gray-400/75 bg-black/20 backdrop-blur-3xl rounded-2xl overflow-clip flex flex-col w-56 scale-y-0 origin-top"
       >
-        <span className="absolute inset-0 bg-gray-500 backdrop-blur-2xl -z-20 opacity-20"></span>
         {items.map((item, i) => (
-          <>
+          <React.Fragment key={item.heading}>
             <div
               ref={(el) => {
                 itemRefs.current[i] = el;
@@ -66,7 +65,7 @@ function Dropdown({ content, items }: DropdownProps) {
                 {item.heading}
               </p>
               {item.subtitle && (
-                <p className="text-gray-400 font-body select-none">
+                <p className="text-gray-400 font-body select-none text-xs">
                   {item.subtitle}
                 </p>
               )}
@@ -74,7 +73,7 @@ function Dropdown({ content, items }: DropdownProps) {
             {i !== items.length - 1 && (
               <div className="separator h-px bg-white/15 my-2 -translate-x-full" />
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>

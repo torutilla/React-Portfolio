@@ -11,12 +11,7 @@ function FillButton({ children, variant, ref, onclick }: FillButtonProps) {
   const variantStyle =
     variant == "icon" ? "rounded-full" : "rounded-2xl pl-4 pr-4";
   const btnRef = ref ? ref : useRef<HTMLButtonElement>(null);
-  const onMouseEnter = () => {
-    // gsap.to(btnRef.current, { y: -2, duration: 0.2, ease: "bounce.in" });
-  };
-  const onMouseLeave = () => {
-    // gsap.to(btnRef.current, { y: 0, duration: 0.2 });
-  };
+
   const onClick = (e: React.MouseEvent) => {
     gsap.fromTo(
       btnRef.current,
@@ -28,19 +23,18 @@ function FillButton({ children, variant, ref, onclick }: FillButtonProps) {
     if (onclick) onclick();
   };
   return (
-    <button
-      ref={btnRef}
-      onMouseLeave={onMouseLeave}
-      onMouseEnter={onMouseEnter}
-      onClick={onClick}
-      className={`bg-accent flex justify-center 
+    <div className="relative overflow-visible">
+      <button
+        ref={btnRef}
+        onClick={onClick}
+        className={`relative bg-accent flex justify-center 
         items-center cursor-pointer p-2 text-background 
-        outline-offset-2 outline-1 outline-accent
-        font-body font-medium overflow-hidden
+        font-body font-medium overflow-hidden focus:outline-1 focus:outline-accent outline-offset-2
         ${variantStyle}`}
-    >
-      {children}
-    </button>
+      >
+        {children}
+      </button>
+    </div>
   );
 }
 
