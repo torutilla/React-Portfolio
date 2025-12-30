@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "./Navbar.tsx";
 import Sidebar from "./Sidebar.tsx";
-import { ScrollContext, useScrollRef } from "../../hooks/useSmoothScroll.ts";
 
 export type Navigation = {
   heading: string;
@@ -17,15 +16,9 @@ export const contactButton: Navigation = {
   target: "contact",
 };
 function NavbarWrapper() {
-  const smoother = useScrollRef();
-
-  const scrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    smoother?.current?.scrollTo(element?.offsetTop!, true, "top top");
-  };
   const [sidebarOpen, setSidebar] = useState(false);
   return (
-    <ScrollContext.Provider value={{ scrollTo }}>
+    <>
       <Navbar
         logoSrc="./Logo.svg"
         navigations={links}
@@ -38,7 +31,7 @@ function NavbarWrapper() {
         navigations={links}
         onClose={() => setSidebar(!sidebarOpen)}
       />
-    </ScrollContext.Provider>
+    </>
   );
 }
 

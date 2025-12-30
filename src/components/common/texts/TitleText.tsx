@@ -1,22 +1,19 @@
-import { useRef } from "react";
-import useSlideAnimation from "../../../hooks/useSlideAnimation.ts";
+import SlideAnimationText from "./SlideAnimationText.tsx";
 
 type TitleTextProps = {
   text: string;
-  triggerTarget: string;
+  trigger: string;
+  override?: ScrollTrigger.Vars;
 };
-function TitleText({ text, triggerTarget }: TitleTextProps) {
-  const ref = useRef<HTMLParagraphElement>(null);
-  useSlideAnimation(triggerTarget, ref);
-
+function TitleText({ text, trigger, override }: TitleTextProps) {
   return (
-    <div>
-      <div className="overflow-hidden">
-        <p ref={ref} className="block text-text text-title font-title">
-          {text}
-        </p>
-      </div>
-    </div>
+    <SlideAnimationText
+      style={{ size: "2xl", variant: "title", color: "text" }}
+      trigger={trigger}
+      triggerOverrides={override}
+    >
+      {text}
+    </SlideAnimationText>
   );
 }
 

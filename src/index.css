@@ -30,32 +30,23 @@
   --background: #111111;
   --surface: #1a1a1a;
   --overlay: rgba(255, 255, 255, 0.05);
+  --primary: #1aa879;
 
   --text: #f1f1f1;
   --secondary-text: #c0c0c0;
   --placeholder-text: #888888;
   --hover-text: #111111;
   --link-text: #82aaff;
-
   --accent: #1aa879;
   --accent-background: #184e3c;
   --background-highlight: #608669;
   --border: #f1f1f1;
-  --border-hover: #e85c5c;
+
 
   --button-background: var(--accent);
-  --button-background-hover: #ff7b7b;
   --button-text: #111111;
   --button-text-hover: var(--hover-text);
 
-  --shadow-light: rgba(0, 0, 0, 0.5);
-  --shadow-medium: rgba(0, 0, 0, 0.7);
-  --shadow-heavy: rgba(0, 0, 0, 0.9);
-
-  --success: #28a745;
-  --warning: #ffc107;
-  --error: #dc3545;
-  --info: #17a2b8;
 
   --spacing-xxs: 0.25rem;
   --spacing-xs: 0.5rem;
@@ -75,6 +66,7 @@
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-overlay: var(--overlay);
+  --color-primary: var(--primary);
 
   --color-text: var(--text);
   --color-secondary-text: var(--secondary-text);
@@ -85,21 +77,12 @@
   --color-accent: var(--accent);
 
   --color-border: var(--border);
-  --color-border-hover: var(--border-hover);
+
 
   --color-button-background: var(--button-background);
-  --color-button-background-hover: var(--button-background-hover);
   --color-button-text: var(--button-text);
   --color-button-text-hover: var(--button-text-hover);
 
-  --color-shadow-light: var(--shadow-light);
-  --color-shadow-medium: var(--shadow-medium);
-  --color-shadow-heavy: var(--shadow-heavy);
-
-  --color-success: var(--success);
-  --color-warning: var(--warning);
-  --color-error: var(--error);
-  --color-info: var(--info);
 
   --spacing-xxs: var(--spacing-xxs);
   --spacing-xs: var(--spacing-xs);

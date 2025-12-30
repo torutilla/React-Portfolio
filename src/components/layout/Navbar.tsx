@@ -21,7 +21,6 @@ function Navbar({
   menuOpen,
   setSidebarActive,
 }: NavbarProps) {
-  const { scrollTo } = useScroll();
   const navRef = useRef<HTMLElement>(null);
   const scrollTreshold = 10;
   const { direction: scrollDir } = useScrollDirection(scrollTreshold);
@@ -58,6 +57,7 @@ function Navbar({
       });
     }
   }, [scrollDir]);
+  const scrollTo = useScroll();
   return (
     <nav
       ref={navRef}

@@ -3,28 +3,26 @@ import Dropdown from "../../components/common/buttons/Dropdown.tsx";
 import { type DropdownItem } from "../../components/common/buttons/Dropdown.tsx";
 import FillButton from "../../components/common/buttons/FillButton.tsx";
 import HeroTitle from "../../components/common/texts/HeroTitle.tsx";
+import { useScroll } from "../../hooks/useSmoothScroll.ts";
 
 function Hero() {
   const buttonItems: DropdownItem[] = [
     {
       heading: "View Resume",
       subtitle: "Download PDF resume",
-      onClick: () => {
-        window.open("src/assets/files/Resume.pdf", "_blank");
-      },
+      onClick: () => open("./files/Resume.pdf"),
     },
     {
       heading: "Interactive Resume",
       subtitle: "Walkthrough my game-style resume",
-      onClick: () => {
-        window.open(
-          "https://christian-torres-interactive-resume.vercel.app/",
-          "_blank"
-        );
-      },
+      onClick: () =>
+        open("https://christian-torres-interactive-resume.vercel.app/"),
     },
   ];
-  const logoSrc = "./Logo.svg";
+  const open = (src: string) => {
+    window.open(src, "_blank");
+  };
+  const scrollTo = useScroll();
   return (
     <div
       id="Home"
@@ -32,10 +30,12 @@ function Hero() {
     >
       <div className="absolute top-0 flex w-full justify-between items-center p-4">
         <a href="#" className="flex leading-none size-7 md:size-9">
-          <img src={logoSrc} alt="logo" />
+          <img src={"./Logo.svg"} alt="logo" />
         </a>
         <div className=" justify-end flex">
-          <FillButton>Get in Touch</FillButton>
+          <FillButton onclick={() => scrollTo("#Contact")}>
+            Get in Touch
+          </FillButton>
         </div>
       </div>
       <div className="flex-col flex justify-center items-center text-center">

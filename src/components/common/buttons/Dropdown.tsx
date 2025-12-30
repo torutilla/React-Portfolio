@@ -15,6 +15,7 @@ type DropdownProps = {
 
 function Dropdown({ content, items }: DropdownProps) {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const tl = useRef<GSAPTimeline>(null);
   const [open, setOpen] = useState(false);
@@ -41,13 +42,21 @@ function Dropdown({ content, items }: DropdownProps) {
   }, []);
 
   const handleButtonClick = () => {
-    if (open) tl.current?.reverse();
-    else tl.current?.play();
+    changeDropdownState();
+  };
+  const changeDropdownState = () => {
+    if (open) {
+      tl.current?.reverse();
+    } else {
+      tl.current?.play();
+    }
     setOpen((open) => !open);
   };
   return (
     <div className="relative flex flex-col gap-3 items-center">
-      <FillButton onclick={handleButtonClick}>{content}</FillButton>
+      <FillButton onclick={handleButtonClick} onBlur={changeDropdownState}>
+        {content}
+      </FillButton>
       <div
         ref={dropdownRef}
         className="top-full mt-2 absolute border border-gray-400/75 bg-black/20 backdrop-blur-3xl rounded-2xl overflow-clip flex flex-col w-56 scale-y-0 origin-top"
