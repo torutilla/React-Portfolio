@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import useRippleAnimation from "../../../hooks/useRippleAnimation.ts";
 type FillButtonProps = {
   ref?: React.RefObject<HTMLButtonElement | null>;
