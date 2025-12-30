@@ -16,7 +16,7 @@ function App() {
       content: "#smooth-content",
       smooth: 2,
       effects: true,
-      smoothTouch: 0.5,
+      smoothTouch: 0.1,
     });
   }, []);
   return (
