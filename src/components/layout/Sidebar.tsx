@@ -10,7 +10,7 @@ type SidebarProps = {
 
 function Sidebar({ isOpen, navigations, onClose }: SidebarProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollTo } = useScroll();
+  const scrollTo = useScroll();
   useEffect(() => {
     if (isOpen) {
       gsap.to(ref.current, { x: 0, duration: 0.2 });
