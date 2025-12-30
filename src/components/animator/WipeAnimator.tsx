@@ -5,12 +5,14 @@ type WipeAnimatorProps = {
   direction?: "left" | "right" | "top" | "bottom";
   duration?: number;
   children: React.ReactNode;
+  trigger?: ScrollTrigger.Vars | null;
 };
 
 function WipeAnimator({
   direction = "top",
   duration = 0.5,
   children,
+  trigger = null,
 }: WipeAnimatorProps) {
   const tl = useRef<GSAPTimeline>(null);
   const divRef = useRef<HTMLDivElement>(null);
@@ -31,13 +33,11 @@ function WipeAnimator({
         bottom: { x: 0, y: height + offset },
       }[direction];
       if (tl.current) tl.current.kill();
-      tl.current = gsap.timeline();
+      tl.current = gsap.timeline({
+        ...(trigger && { scrollTrigger: trigger }),
+      });
       tl.current
-        .fromTo(
-          span,
-          { x: dir.x, y: dir.y, scrollTrigger: span },
-          { x: 0, y: 0 }
-        )
+        .fromTo(span, { x: dir.x, y: dir.y }, { x: 0, y: 0 })
         .to(span, { x: -dir.x, y: -dir.y, duration: duration })
         .fromTo(
           div,
@@ -57,7 +57,7 @@ function WipeAnimator({
   }, [direction, duration]);
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden w-fit">
       <div ref={divRef}>{children}</div>
       <span ref={spanRef} className="absolute inset-0 bg-accent"></span>
     </div>

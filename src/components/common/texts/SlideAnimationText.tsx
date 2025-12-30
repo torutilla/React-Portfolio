@@ -25,6 +25,7 @@ const variantMap: Record<FontVariant, string> = {
 
 const sizeMap: Record<TextSize, string> = {
   sm: "text-sm",
+  md: "text-lg",
   lg: "text-xl",
   xl: "text-2xl",
   "2xl": "text-title",

@@ -9,13 +9,9 @@ function Projects() {
     <div
       id={id}
       ref={ref}
-      className="absolute w-full h-[200dvh]  flex flex-col items-center pt-5 z-20 overflow-hidden md"
+      className="relative w-full h-dvh inset-0 flex flex-col items-center pt-5 overflow-hidden md bg-background"
     >
       <TitleText text="PROJECTS" trigger={`#${id}`} />
-      <div
-        id="projects-inner"
-        className="relative will-change-transform min-h-[200dvh]"
-      ></div>
     </div>
   );
 }

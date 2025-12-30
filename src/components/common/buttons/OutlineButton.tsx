@@ -1,12 +1,12 @@
 import { useRef, type MouseEventHandler } from "react";
 import gsap from "gsap";
 import useRippleAnimation from "../../../hooks/useRippleAnimation.ts";
-type IconButtonProps = {
+type OutlineButtonProps = {
   onClick?: MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
 };
 
-function OutlineButton({ onClick, children }: IconButtonProps) {
+function OutlineButton({ onClick, children }: OutlineButtonProps) {
   const btnRef = useRef<HTMLButtonElement>(null);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const btn = btnRef.current;

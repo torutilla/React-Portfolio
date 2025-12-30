@@ -16,8 +16,8 @@ function useSlideAnimation(trigger:string, ref: React.RefObject<HTMLElement | nu
           duration: 0.3,
           scrollTrigger: {
             trigger: trigger,
-            start: "top bottom-=20",
-            end: "top top",
+            start: "top bottom",
+            end: "top top+=20",
             scrub: true,
             ...override,
           },
