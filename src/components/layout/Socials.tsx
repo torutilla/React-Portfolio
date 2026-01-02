@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { createRef, useLayoutEffect, useMemo, useRef } from "react";
 import FillButton from "../../components/common/buttons/FillButton.tsx";
 import { Email, GitHub, LinkedIn } from "@mui/icons-material";
 import gsap from "gsap";
@@ -12,7 +12,10 @@ function Socials() {
       link: "https://www.linkedin.com/in/christian-torres-7b45b4243/",
     },
   ];
-  const iconRefs = icons.map((_) => useRef<HTMLButtonElement>(null));
+  const iconRefs = useMemo(
+    () => icons.map((_) => createRef<HTMLButtonElement>()),
+    []
+  );
   const divRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
     const tl = gsap.timeline({
