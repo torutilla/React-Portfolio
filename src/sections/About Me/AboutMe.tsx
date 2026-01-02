@@ -4,11 +4,13 @@ import SlideAnimationText from "../../components/common/texts/SlideAnimationText
 import Avatar from "../../components/layout/Avatar.tsx";
 import TechStackButton from "../../components/layout/TechStackButton.tsx";
 import useSlideAnimation from "../../hooks/useSlideAnimation.ts";
+import TabContainer from "../../components/layout/TabContainer.tsx";
 
 function AboutMe() {
-  const stack = [
+  const developmentStack = [
     { heading: "TypeScript", icon: "./" },
     { heading: "JavaScript", icon: "./" },
+    { heading: "React", icon: "./" },
     { heading: "Flutter/Dart", icon: "./" },
     { heading: "Python", icon: "./" },
     { heading: "HTML", icon: "./" },
@@ -18,6 +20,13 @@ function AboutMe() {
     { heading: "Node.js", icon: "./" },
     { heading: "Express.js", icon: "./" },
   ];
+  const designStack = [
+    { heading: "Adobe Illustrator", icon: "./" },
+    { heading: "Adobe Photoshop", icon: "./" },
+    { heading: "Adobe InDesign", icon: "./" },
+    { heading: "Aseprite", icon: "./" },
+    { heading: "Figma", icon: "./" },
+  ];
   const avatarRef = useRef<HTMLDivElement>(null);
   useSlideAnimation("#About", avatarRef);
   return (
@@ -26,7 +35,7 @@ function AboutMe() {
       className="relative lg:h-[50dvh] flex justify-center p-3 w-dvw"
     >
       <div className="border rounded-3xl border-gray-400/75 bg-black/30 backdrop-blur-3xl w-full h-full flex justify-center p-3">
-        <div className="grid w-full h-full grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-3 p-3 lg:p-6 lg:gap-10">
+        <div className="grid w-full h-full grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-3 gap-8 p-3 lg:p-6 lg:gap-10">
           <div className="col-span-2 flex flex-col gap-3 items-center lg:items-start">
             <Avatar imgSrc="./src/assets/images/me.jpg" ref={avatarRef} />
             <div className="flex flex-col items-center lg:items-start w-full">
@@ -49,24 +58,38 @@ function AboutMe() {
               </SlideAnimationText>
             </div>
           </div>
-          <div className="flex flex-col justify-evenly lg:justify-self-start">
+          <div className="flex flex-col justify-evenly lg:justify-self-start gap-3">
             <WipeAnimator
               direction="left"
               trigger={{ trigger: "#About", start: "top center" }}
             >
-              <p className="font-title text-2xl text-text w-fit">Tech Stack</p>
+              <p className="font-title text-2xl text-text w-fit">My Toolkit</p>
             </WipeAnimator>
-
-            <div className="flex flex-wrap gap-2">
-              {stack.map((tech, index) => {
-                return (
-                  <TechStackButton
-                    key={index}
-                    heading={tech.heading}
-                  ></TechStackButton>
-                );
-              })}
-            </div>
+            <TabContainer
+              headingStyle={{ size: "md", variant: "body" }}
+              tabs={[
+                {
+                  heading: "Development",
+                  content: (
+                    <div className="w-full flex flex-wrap gap-2">
+                      {developmentStack.map((tech, index) => (
+                        <TechStackButton key={index} heading={tech.heading} />
+                      ))}
+                    </div>
+                  ),
+                },
+                {
+                  heading: "Graphic Design & UI",
+                  content: (
+                    <div className="w-full flex flex-wrap gap-2">
+                      {designStack.map((tech, index) => (
+                        <TechStackButton key={index} heading={tech.heading} />
+                      ))}
+                    </div>
+                  ),
+                },
+              ]}
+            />
           </div>
         </div>
       </div>

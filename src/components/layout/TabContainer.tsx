@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
+import { getTextClasses, type TextStyle } from "../../types/theme.ts";
 
 type Tab = {
   heading: string;
@@ -7,8 +8,12 @@ type Tab = {
 };
 type TabContainerProps = {
   tabs: Tab[];
+  headingStyle?: TextStyle;
 };
-function TabContainer({ tabs }: TabContainerProps) {
+function TabContainer({
+  tabs,
+  headingStyle = { size: "md", variant: "title", color: "text" },
+}: TabContainerProps) {
   const [currentTabIndex, setCurrentTab] = useState(0);
   const previousTabIndex = useRef(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -31,13 +36,13 @@ function TabContainer({ tabs }: TabContainerProps) {
   };
   return (
     <div className="w-full h-full">
-      <div className="flex gap-md justify-center">
+      <div className="flex gap-md justify-evenly">
         {tabs.map((tab, index) => {
           return (
             <button
               key={index}
               onClick={() => handleOnClick(index)}
-              className={`font-title cursor-pointer ${
+              className={`${getTextClasses(headingStyle)} cursor-pointer ${
                 currentTabIndex == index ? "text-text" : "text-white/40"
               }`}
             >
@@ -47,14 +52,16 @@ function TabContainer({ tabs }: TabContainerProps) {
         })}
       </div>
       <div className="bg-white/60 h-0.5 w-full"></div>
-      <div className="flex w-full h-full" ref={wrapperRef}>
-        {tabs.map((tab, index) => {
-          return (
-            <div className="min-w-full shrink-0 h-full" key={index}>
-              {tab.content}
-            </div>
-          );
-        })}
+      <div className="overflow-hidden w-full h-full">
+        <div className="flex" ref={wrapperRef}>
+          {tabs.map((tab, index) => {
+            return (
+              <div className="w-full shrink-0 h-full mt-3" key={index}>
+                {tab.content}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
