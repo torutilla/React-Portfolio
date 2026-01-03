@@ -1,15 +1,16 @@
 import { createRef, useLayoutEffect, useMemo, useRef } from "react";
 import FillButton from "../../components/common/buttons/FillButton.tsx";
 import { Email, GitHub, LinkedIn } from "@mui/icons-material";
+import { SocialLinks } from "../../utils/links.ts";
 import gsap from "gsap";
 
 function Socials() {
   const icons = [
-    { Icon: GitHub, link: "https://github.com/torutilla" },
-    { Icon: Email, link: "mailto:christiantorres0418@gmail.com" },
+    { Icon: GitHub, link: SocialLinks.gitHub },
+    { Icon: Email, link: `mailto:${SocialLinks.mail}` },
     {
       Icon: LinkedIn,
-      link: "https://www.linkedin.com/in/christian-torres-7b45b4243/",
+      link: SocialLinks.linkedIn,
     },
   ];
   const iconRefs = useMemo(

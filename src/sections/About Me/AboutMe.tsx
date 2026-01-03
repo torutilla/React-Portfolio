@@ -41,7 +41,7 @@ function AboutMe() {
             <Avatar imgSrc={imgMe} ref={avatarRef} />
             <div className="flex flex-col items-center lg:items-start w-full">
               <SlideAnimationText
-                style={{ size: "xl", variant: "title" }}
+                style={{ size: "lg", variant: "title" }}
                 trigger="#About"
                 triggerOverrides={{ start: "top bottom-=20" }}
               >
@@ -64,7 +64,7 @@ function AboutMe() {
               direction="left"
               trigger={{ trigger: "#About", start: "top center" }}
             >
-              <p className="font-title text-2xl text-text w-fit">My Toolkit</p>
+              <p className="font-title text-xl text-text w-fit">My Toolkit</p>
             </WipeAnimator>
             <TabContainer
               headingStyle={{ size: "md", variant: "body" }}
