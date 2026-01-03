@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { getTextClasses, type TextStyle } from "../../types/theme.ts";
 
 type Tab = {
-  heading: string;
+  heading: React.ReactNode;
   content: React.ReactNode;
 };
 type TabContainerProps = {
