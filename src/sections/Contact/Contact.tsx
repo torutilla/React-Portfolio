@@ -8,7 +8,7 @@ function Contact() {
       <TitleText
         text="Get in Touch"
         trigger="#Contact"
-        override={{ end: "top center+=30" }}
+        override={{ end: "top center" }}
       ></TitleText>
       <div className="h-full p-3 flex flex-col justify-around">
         <div>
@@ -20,14 +20,14 @@ function Contact() {
               color: "primary",
             }}
             trigger="#Contact"
-            triggerOverrides={{ end: "top center+=30" }}
+            triggerOverrides={{ end: "top center" }}
           >
             Hey! I’d love to hear from you
           </SlideAnimationText>
           <SlideAnimationText
             style={{ size: "md", variant: "body", weight: "light" }}
             trigger="#Contact"
-            triggerOverrides={{ end: "top center+=30" }}
+            triggerOverrides={{ end: "top center" }}
           >
             Whether you’re working on a project, want to collaborate, or just
             have a question — feel free to reach out.

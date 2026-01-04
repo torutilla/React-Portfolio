@@ -39,6 +39,7 @@ function Socials() {
         i * 0.1
       );
     });
+    tl.to(divRef.current, { display: "none" });
   }, []);
   return (
     <div
