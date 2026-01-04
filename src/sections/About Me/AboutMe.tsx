@@ -33,7 +33,7 @@ function AboutMe() {
   return (
     <div
       id="About"
-      className="relative lg:h-[50dvh] flex justify-center p-3 w-dvw"
+      className="relative lg:h-[50vh] flex justify-center p-3 w-dvw"
     >
       <div className="border rounded-3xl border-gray-400/75 bg-black/30 backdrop-blur-3xl w-full h-full flex justify-center p-3">
         <div className="grid w-full h-full grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-3 gap-8 p-3 lg:p-6 lg:gap-10">

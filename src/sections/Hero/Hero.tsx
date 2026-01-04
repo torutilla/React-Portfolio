@@ -26,7 +26,7 @@ function Hero() {
   return (
     <div
       id="Home"
-      className="relative flex flex-col h-dvh w-dvw items-center justify-center gap-xl z-0"
+      className="relative flex flex-col h-screen w-dvw items-center justify-center gap-xl z-0"
     >
       <div className="absolute top-0 flex w-full justify-between items-center p-4">
         <a href="#" className="flex leading-none size-7 md:size-9">

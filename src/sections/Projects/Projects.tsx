@@ -12,7 +12,7 @@ function Projects() {
     <div
       id={id}
       ref={ref}
-      className="relative w-dvw h-dvh inset-0 flex flex-col gap-3 items-center p-6 overflow-hidden md bg-background"
+      className="relative w-dvw h-screen inset-0 flex flex-col gap-3 items-center p-6 overflow-hidden md bg-background"
     >
       <TitleText text="PROJECTS" trigger={`#${id}`} />
       <TabContainer

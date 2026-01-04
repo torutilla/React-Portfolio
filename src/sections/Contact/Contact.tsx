@@ -4,7 +4,7 @@ import AllContacts from "./AllContacts.tsx";
 
 function Contact() {
   return (
-    <div id="Contact" className="relative h-[70dvh] lg:h-[50dvh] w-screen p-6">
+    <div id="Contact" className="relative h-[70vh] lg:h-[50vh] w-screen p-6">
       <TitleText
         text="Get in Touch"
         trigger="#Contact"
