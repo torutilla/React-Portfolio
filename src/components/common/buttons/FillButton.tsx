@@ -18,10 +18,13 @@ function FillButton({
   const variantStyle =
     variant == "icon" ? "rounded-full" : "rounded-2xl pl-4 pr-4";
   const btnRef = ref ? ref : useRef<HTMLButtonElement>(null);
-  const btn = btnRef.current;
 
   const onClick = (e: React.MouseEvent) => {
-    gsap.fromTo(btn, { y: -1, ease: "circ.in" }, { y: 0, duration: 0.3 });
+    gsap.fromTo(
+      btnRef.current,
+      { y: -1 },
+      { y: 0, duration: 0.3, ease: "circ.in" }
+    );
     const ripple = useRippleAnimation(btnRef.current);
     ripple(e);
 
