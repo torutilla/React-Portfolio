@@ -62,35 +62,47 @@ function AboutMe() {
           <div className="flex flex-col justify-evenly lg:justify-self-start gap-3">
             <WipeAnimator
               direction="left"
-              trigger={{ trigger: "#About", start: "top center" }}
+              trigger={{
+                trigger: "#About",
+                start: "center-=20 center",
+                toggleActions: "play none none reverse",
+              }}
             >
-              <p className="font-title text-xl text-text w-fit">My Toolkit</p>
+              <div>
+                <p className="font-title text-xl text-text w-fit">My Toolkit</p>
+                <TabContainer
+                  headingStyle={{ size: "md", variant: "body" }}
+                  tabs={[
+                    {
+                      heading: "Development",
+                      content: (
+                        <div className="w-full flex flex-wrap gap-2">
+                          {developmentStack.map((tech, index) => (
+                            <TechStackButton
+                              key={index}
+                              heading={tech.heading}
+                            />
+                          ))}
+                        </div>
+                      ),
+                    },
+                    {
+                      heading: "Graphic Design & UI",
+                      content: (
+                        <div className="w-full flex flex-wrap gap-2">
+                          {designStack.map((tech, index) => (
+                            <TechStackButton
+                              key={index}
+                              heading={tech.heading}
+                            />
+                          ))}
+                        </div>
+                      ),
+                    },
+                  ]}
+                />
+              </div>
             </WipeAnimator>
-            <TabContainer
-              headingStyle={{ size: "md", variant: "body" }}
-              tabs={[
-                {
-                  heading: "Development",
-                  content: (
-                    <div className="w-full flex flex-wrap gap-2">
-                      {developmentStack.map((tech, index) => (
-                        <TechStackButton key={index} heading={tech.heading} />
-                      ))}
-                    </div>
-                  ),
-                },
-                {
-                  heading: "Graphic Design & UI",
-                  content: (
-                    <div className="w-full flex flex-wrap gap-2">
-                      {designStack.map((tech, index) => (
-                        <TechStackButton key={index} heading={tech.heading} />
-                      ))}
-                    </div>
-                  ),
-                },
-              ]}
-            />
           </div>
         </div>
       </div>

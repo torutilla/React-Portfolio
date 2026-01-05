@@ -3,7 +3,6 @@ import { ScrollSmoother, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
 import { ScrollRefContext } from "./hooks/useSmoothScroll.ts";
-import Socials from "./components/layout/Socials.tsx";
 import Background from "./components/Background.tsx";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -29,7 +28,6 @@ function App() {
         </div>
         {/* <FloatingIconButton icon={LightMode} position="bottom-left" /> */}
       </div>
-      <Socials />
     </ScrollRefContext.Provider>
   );
 }

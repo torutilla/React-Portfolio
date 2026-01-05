@@ -21,31 +21,33 @@ function Socials() {
   useLayoutEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: "#Home",
-        start: "bottom center",
-        end: "top top",
+        trigger: "#Contact",
+        start: "center bottom",
         toggleActions: "play none play reverse",
       },
     });
     iconRefs.forEach((icon, i) => {
-      tl.to(
+      tl.fromTo(
         icon.current,
         {
-          x: 100,
+          x: -100,
           opacity: 0,
-          duration: 0.2,
-          ease: "circ.in",
+          duration: 0.3,
+          ease: "power2.in",
+        },
+        {
+          x: 0,
+          opacity: 1,
         },
         i * 0.1
       );
     });
-    tl.to(divRef.current, { display: "none" });
   }, []);
   return (
     <div
       ref={divRef}
       id="socials-container"
-      className="fixed right-6 bottom-10  h-auto flex gap-md overflow-hidden p-1"
+      className="right-6 bottom-10  h-auto flex gap-md overflow-hidden p-1"
     >
       {icons.map(({ Icon, link }, i) => (
         <FillButton
