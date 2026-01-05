@@ -49,11 +49,11 @@ function WipeAnimator({
 
     update();
 
-    const observer = new ResizeObserver(() => update());
+    // const observer = new ResizeObserver(() => update());
 
-    observer.observe(div);
+    // observer.observe(div);
 
-    return () => observer.disconnect();
+    // return () => observer.disconnect();
   }, [direction, duration]);
 
   return (
