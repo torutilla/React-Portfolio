@@ -6,7 +6,7 @@ import TechStackButton from "../../components/layout/TechStackButton.tsx";
 import useSlideAnimation from "../../hooks/useSlideAnimation.ts";
 import TabContainer from "../../components/layout/TabContainer.tsx";
 import imgMe from "../../assets/images/me.jpg";
-
+import { Code, Palette } from "@mui/icons-material";
 function AboutMe() {
   const developmentStack = [
     { heading: "TypeScript", icon: "./" },
@@ -33,10 +33,10 @@ function AboutMe() {
   return (
     <div
       id="About"
-      className="relative lg:h-[50vh] flex justify-center p-3 w-dvw"
+      className="relative lg:min-h-[50vh] flex justify-center p-3 w-dvw"
     >
-      <div className="border rounded-3xl border-gray-400/75 bg-black/30 backdrop-blur-3xl w-full h-full flex justify-center p-3">
-        <div className="grid w-full h-full grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-3 gap-8 p-3 lg:p-6 lg:gap-10">
+      <div className="border rounded-3xl border-gray-400/75 bg-black/30 backdrop-blur-3xl w-full flex justify-center p-3">
+        <div className="grid w-full  grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-3 gap-8 p-3 lg:p-6 lg:gap-10">
           <div className="col-span-2 flex flex-col gap-3 items-center lg:items-start">
             <Avatar imgSrc={imgMe} ref={avatarRef} />
             <div className="flex flex-col items-center lg:items-start w-full">
@@ -71,10 +71,10 @@ function AboutMe() {
               <div>
                 <p className="font-title text-xl text-text w-fit">My Toolkit</p>
                 <TabContainer
-                  headingStyle={{ size: "md", variant: "body" }}
+                  headingStyle={{ size: "sm", variant: "title" }}
                   tabs={[
                     {
-                      heading: "Development",
+                      heading: <Code />,
                       content: (
                         <div className="w-full flex flex-wrap gap-2">
                           {developmentStack.map((tech, index) => (
@@ -87,7 +87,7 @@ function AboutMe() {
                       ),
                     },
                     {
-                      heading: "Graphic Design & UI",
+                      heading: <Palette />,
                       content: (
                         <div className="w-full flex flex-wrap gap-2">
                           {designStack.map((tech, index) => (

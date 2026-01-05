@@ -34,15 +34,19 @@ function TabContainer({
     setCurrentTab(newIndex);
   };
   return (
-    <div className="w-full h-full">
-      <div className="flex gap-md justify-evenly">
+    <div className="w-full h-full flex flex-col gap-1">
+      <div className=" bg-black/30 rounded-full lg:rounded-lg p-1 border border-white/20 w-fit flex gap-3">
         {tabs.map((tab, index) => {
           return (
             <button
               key={index}
               onClick={() => handleOnClick(index)}
-              className={`${getTextClasses(headingStyle)} cursor-pointer ${
-                currentTabIndex == index ? "text-text" : "text-white/40"
+              className={`${getTextClasses(
+                headingStyle
+              )} cursor-pointer p-1.5 rounded-full lg:rounded-md ${
+                currentTabIndex == index
+                  ? "text-text bg-neutral-600"
+                  : "text-white/40"
               }`}
             >
               {tab.heading}
@@ -50,12 +54,12 @@ function TabContainer({
           );
         })}
       </div>
-      <div className="bg-white/60 h-0.5 w-full"></div>
-      <div className="overflow-hidden w-full h-full">
+
+      <div className="overflow-hidden w-full h-full  bg-black/30 rounded-lg border-white/20 border ">
         <div className="flex" ref={wrapperRef}>
           {tabs.map((tab, index) => {
             return (
-              <div className="w-full shrink-0 h-full mt-3" key={index}>
+              <div className="w-full shrink-0 p-2" key={index}>
                 {tab.content}
               </div>
             );
