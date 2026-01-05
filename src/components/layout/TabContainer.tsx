@@ -32,7 +32,6 @@ function TabContainer({
   const handleOnClick = (newIndex: number) => {
     previousTabIndex.current = currentTabIndex;
     setCurrentTab(newIndex);
-    console.log(previousTabIndex, currentTabIndex);
   };
   return (
     <div className="w-full h-full">
