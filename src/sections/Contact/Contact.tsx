@@ -4,11 +4,11 @@ import Socials from "../../components/layout/Socials.tsx";
 
 function Contact() {
   const overrides: ScrollTrigger.Vars = {
-    start: "center bottom",
+    start: "center-=10% bottom",
     end: "bottom bottom",
   };
   return (
-    <div id="Contact" className="relative h-[70lvh] lg:h-[50lvh] w-screen p-6">
+    <div id="Contact" className="relative h-[70dvh] lg:h-[50dvh] w-screen p-6">
       <TitleText
         text="Get in Touch"
         trigger="#Contact"
