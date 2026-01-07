@@ -96,6 +96,7 @@
   --animate-shimmer: shimmer 4s linear infinite;
 
   --breakpoint-xs: 480px;
+  --breakpoint-mobile-xl: 600px;
 
   --text-md: 1rem;
   --text-hero: clamp(0.8rem, 3.5vw + 0.6rem, 6rem);
