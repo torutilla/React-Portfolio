@@ -23,11 +23,16 @@ function TabContainer({
     const wrapper = wrapperRef.current;
     if (!wrapper || prevTab == currentTabIndex) return;
 
-    gsap.to(wrapper, {
-      xPercent: -currentTabIndex * 100,
-      duration: 0.6,
-      ease: "power2.out",
-    });
+    gsap.fromTo(
+      wrapper,
+      { opacity: 0 },
+      {
+        xPercent: -currentTabIndex * 100,
+        duration: 0.6,
+        opacity: 1,
+        ease: "power2.out",
+      }
+    );
   }, [currentTabIndex]);
   const handleOnClick = (newIndex: number) => {
     previousTabIndex.current = currentTabIndex;
@@ -55,11 +60,11 @@ function TabContainer({
         })}
       </div>
 
-      <div className="overflow-hidden w-full h-full  bg-black/30 rounded-lg border-white/20 border ">
+      <div className="overflow-hidden w-full h-full bg-black/30 rounded-lg border-white/20 border ">
         <div className="flex" ref={wrapperRef}>
           {tabs.map((tab, index) => {
             return (
-              <div className="w-full shrink-0 p-2" key={index}>
+              <div className="w-full shrink-0 p-4" key={index}>
                 {tab.content}
               </div>
             );

@@ -1,5 +1,7 @@
+import ProjectTab from "./ProjectTab.tsx";
+
 function GameDevelopmentTab() {
-  return <div className="w-full text-text">GameDevelopmentTab</div>;
+  return <ProjectTab></ProjectTab>;
 }
 
 export default GameDevelopmentTab;

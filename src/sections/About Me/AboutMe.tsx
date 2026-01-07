@@ -6,7 +6,7 @@ import TechStackButton from "../../components/layout/TechStackButton.tsx";
 import useSlideAnimation from "../../hooks/useSlideAnimation.ts";
 import TabContainer from "../../components/layout/TabContainer.tsx";
 import imgMe from "../../assets/images/me.jpg";
-import { Code, Palette } from "@mui/icons-material";
+import { CodeOff, Palette } from "@mui/icons-material";
 function AboutMe() {
   const developmentStack = [
     { heading: "TypeScript", icon: "./" },
@@ -20,6 +20,8 @@ function AboutMe() {
     { heading: "Godot Engine", icon: "./" },
     { heading: "Node.js", icon: "./" },
     { heading: "Express.js", icon: "./" },
+    { heading: "Firebase", icon: "./" },
+    { heading: "Arduino", icon: "./" },
   ];
   const designStack = [
     { heading: "Adobe Illustrator", icon: "./" },
@@ -65,7 +67,6 @@ function AboutMe() {
               trigger={{
                 trigger: "#About",
                 start: "center-=20 center",
-                toggleActions: "play none none reverse",
               }}
             >
               <div>
@@ -74,7 +75,7 @@ function AboutMe() {
                   headingStyle={{ size: "sm", variant: "title" }}
                   tabs={[
                     {
-                      heading: <Code />,
+                      heading: <CodeOff />,
                       content: (
                         <div className="w-full flex flex-wrap gap-2">
                           {developmentStack.map((tech, index) => (

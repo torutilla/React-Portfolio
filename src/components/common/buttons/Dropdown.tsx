@@ -27,11 +27,14 @@ function Dropdown({ content, items }: DropdownProps) {
     const el = itemRefs.current[index];
     const ripple = useRippleAnimation(el, 1);
     ripple(e);
+
     onClick?.();
   };
   useLayoutEffect(() => {
     const dropdown = dropdownRef.current;
-    tl.current = gsap.timeline({ paused: true });
+    tl.current = gsap.timeline({
+      paused: true,
+    });
     tl.current
       .to(dropdown, {
         scaleY: "100%",
@@ -42,9 +45,6 @@ function Dropdown({ content, items }: DropdownProps) {
   }, []);
 
   const handleButtonClick = () => {
-    changeDropdownState();
-  };
-  const changeDropdownState = () => {
     if (open) {
       tl.current?.reverse();
     } else {
@@ -52,9 +52,16 @@ function Dropdown({ content, items }: DropdownProps) {
     }
     setOpen((open) => !open);
   };
+
+  const handleButtonBlur = () => {
+    if (open) {
+      tl.current?.reverse();
+      setOpen(false);
+    }
+  };
   return (
     <div className="relative flex flex-col gap-3 items-center">
-      <FillButton onclick={handleButtonClick} onBlur={changeDropdownState}>
+      <FillButton onclick={handleButtonClick} onBlur={handleButtonBlur}>
         {content}
       </FillButton>
       <div
