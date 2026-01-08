@@ -4,8 +4,14 @@ import Bukqueue from "../../assets/images/me.jpg";
 export const projects: Record<string, ProjectDescription[]> = {
     game: [
     {
-        name: "Mobile Booking / Taxi App for Trike Vehicle (Bukqueue)",
-        date: "2024 - 2025",
+        name: "Bow and Arrow (Recreation)",
+        date: "2025",
+        techStack: ["Godot"],
+        imgSrc: Bukqueue,
+    },
+    {
+        name: "Action RPG",
+        date: "2025",
         techStack: ["Godot"],
         imgSrc: Bukqueue,
     },
@@ -18,11 +24,35 @@ export const projects: Record<string, ProjectDescription[]> = {
         imgSrc: Bukqueue,
     },
     ],
-    gfx: [
+    design: [
     {
-        name: "Busy Kitchen Logo",
-        date: "2025",
-        techStack: ["Adobe Photoshop", "Adobe InDesign"],
+        name: "Mobile Booking / Taxi App for Trike Vehicle (Bukqueue)",
+        date: "2024",
+        techStack: ["Figma"],
+        imgSrc: Bukqueue,
+    },
+    {
+        name: "ShopUs",
+        date: "2023",
+        techStack: ["Figma"],
+        imgSrc: Bukqueue,
+    },
+    {
+        name: "Meraki Tattoo",
+        date: "2023",
+        techStack: ["Adobe Illustrator", "Adobe InDesign"],
+        imgSrc: Bukqueue,
+    },
+    {
+        name: "Jen Sofia",
+        date: "2023",
+        techStack: ["Adobe Illustrator", "Adobe InDesign", "Adobe Photoshop"],
+        imgSrc: Bukqueue,
+    },
+    {
+        name: "Busy Kitchen",
+        date: "2020",
+        techStack: ["Adobe Illustrator", "Adobe InDesign", "Adobe Photoshop"],
         imgSrc: Bukqueue,
     },
     ],

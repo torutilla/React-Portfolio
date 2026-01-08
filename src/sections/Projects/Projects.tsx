@@ -16,6 +16,7 @@ function Projects() {
   const ref = useRef<HTMLDivElement>(null);
   const id = "Projects";
   const tabDefs = [
+    { label: "Graphics & UI", component: DesignTab, icon: Brush },
     {
       label: "Game",
       component: GameDevelopmentTab,
@@ -27,7 +28,6 @@ function Projects() {
       icon: Smartphone,
     },
     { label: "Web", component: WebDevelopmentTab, icon: Language },
-    { label: "Graphics & UI", component: DesignTab, icon: Brush },
   ];
   return (
     <div
@@ -37,6 +37,7 @@ function Projects() {
     >
       <TitleText text="PROJECTS" trigger={`#${id}`} />
       <TabContainer
+        dynamicHeight={true}
         headingStyle={{ size: "sm" }}
         tabs={tabDefs.map(({ label, component: Comp, icon: Icon }) => ({
           heading: (

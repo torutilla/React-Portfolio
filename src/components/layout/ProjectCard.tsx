@@ -28,6 +28,7 @@ function ProjectCard({ project, onClick }: CardProps) {
       ?.to(imgRef.current, {
         scale: 1.05,
         ease: "power4.in",
+        duration: 0.3,
       })
       .to(blurdivRef.current, { opacity: 1 }, "<")
       .to(stackRef.current, { yPercent: 0 }, "<");
@@ -39,8 +40,8 @@ function ProjectCard({ project, onClick }: CardProps) {
       .to(stackRef.current, { yPercent: 100 }, "<");
   };
   return (
-    <div className="relative w-full h-full rounded-lg overflow-clip cursor-pointer">
-      <div className="overflow-clip">
+    <div className="relative w-full rounded-lg overflow-clip cursor-pointer">
+      <div className="overflow-clip aspect-video">
         <img
           ref={imgRef}
           src={project.imgSrc}
@@ -52,7 +53,7 @@ function ProjectCard({ project, onClick }: CardProps) {
         onMouseLeave={onHoverOut}
         onMouseEnter={onHover}
         ref={blurdivRef}
-        className="absolute inset-0 h-full w-full bg-background/40 backdrop-blur-xs flex justify-center items-center"
+        className="absolute inset-0 bg-background/40 backdrop-blur-xs flex justify-center items-center"
       >
         <FillButton onclick={onClick}>See Project</FillButton>
       </div>
