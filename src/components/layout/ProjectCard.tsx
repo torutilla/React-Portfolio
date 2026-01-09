@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import TechStackButton from "./TechStackButton.tsx";
 import gsap from "gsap";
-import FillButton from "../common/buttons/FillButton.tsx";
 
 export type ProjectDescription = {
   imgSrc: string;
@@ -53,22 +52,20 @@ function ProjectCard({ project, onClick }: CardProps) {
         onMouseLeave={onHoverOut}
         onMouseEnter={onHover}
         ref={blurdivRef}
-        className="absolute inset-0 bg-background/40 backdrop-blur-xs flex justify-center items-center"
+        className="absolute inset-0 bg-background/40 backdrop-blur-xs flex rounded-lg items-end"
       >
-        <FillButton onclick={onClick}>See Project</FillButton>
-      </div>
-      <div
-        ref={stackRef}
-        className="absolute bottom-0 p-3 hidden md:flex flex-col gap-1"
-      >
-        <p className="font-title text-text text-md">{project.name}</p>
-        <p className="font-subtitle text-text font-extralight">
-          {project.date}
-        </p>
-        <div className="flex gap-1">
-          {project.techStack.map((stack, index) => {
-            return <TechStackButton key={index} heading={stack} />;
-          })}
+        <div ref={stackRef} className="p-3 flex flex-col gap-1">
+          <p className="font-title text-text text-xs md:text-md">
+            {project.name}
+          </p>
+          <p className="font-subtitle text-text font-extralight">
+            {project.date}
+          </p>
+          <div className="hidden md:flex gap-1">
+            {project.techStack.map((stack, index) => {
+              return <TechStackButton key={index} heading={stack} />;
+            })}
+          </div>
         </div>
       </div>
     </div>

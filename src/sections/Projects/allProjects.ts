@@ -1,5 +1,10 @@
 import type { ProjectDescription } from "../../components/layout/ProjectCard.tsx";
-import Bukqueue from "../../assets/images/me.jpg";
+import Bukqueue from "../../assets/images/bukqueue.jpg";
+import Meraki from "../../assets/images/Meraki.png";
+import BusyKitchen from "../../assets/images/BusyKitchen.jpg"
+import SVDFarm from "../../assets/images/SVDFarm.jpg";
+import BowArrow from "../../assets/images/Bow&Arrow.png";
+import ActionRPG from "../../assets/images/ActionRPG.png";
 
 export const projects: Record<string, ProjectDescription[]> = {
     game: [
@@ -7,13 +12,13 @@ export const projects: Record<string, ProjectDescription[]> = {
         name: "Bow and Arrow (Recreation)",
         date: "2025",
         techStack: ["Godot"],
-        imgSrc: Bukqueue,
+        imgSrc: BowArrow,
     },
     {
         name: "Action RPG",
         date: "2025",
         techStack: ["Godot"],
-        imgSrc: Bukqueue,
+        imgSrc: ActionRPG,
     },
     ],
     web: [
@@ -21,39 +26,39 @@ export const projects: Record<string, ProjectDescription[]> = {
         name: "Interactive Resume",
         date: "2025",
         techStack: ["HTML", "CSS", "JavaScript"],
-        imgSrc: Bukqueue,
+        imgSrc: "./",
     },
     ],
     design: [
     {
-        name: "Mobile Booking / Taxi App for Trike Vehicle (Bukqueue)",
+        name: "Mobile Booking / Taxi App for Trike Vehicle (Bukqueue UI)",
         date: "2024",
         techStack: ["Figma"],
         imgSrc: Bukqueue,
     },
     {
-        name: "ShopUs",
+        name: "Meraki Tattoo Logo",
         date: "2023",
-        techStack: ["Figma"],
-        imgSrc: Bukqueue,
+        techStack: ["Illustrator", "InDesign"],
+        imgSrc: Meraki,
     },
     {
-        name: "Meraki Tattoo",
-        date: "2023",
-        techStack: ["Adobe Illustrator", "Adobe InDesign"],
-        imgSrc: Bukqueue,
+        name: "Busy Kitchen Logo",
+        date: "2020",
+        techStack: ["Illustrator", "InDesign", "Photoshop"],
+        imgSrc: BusyKitchen,
     },
     {
         name: "Jen Sofia",
         date: "2023",
-        techStack: ["Adobe Illustrator", "Adobe InDesign", "Adobe Photoshop"],
-        imgSrc: Bukqueue,
+        techStack: ["Illustrator", "InDesign", "Photoshop"],
+        imgSrc: "./",
     },
     {
-        name: "Busy Kitchen",
-        date: "2020",
-        techStack: ["Adobe Illustrator", "Adobe InDesign", "Adobe Photoshop"],
-        imgSrc: Bukqueue,
+        name: "SVD Farm Brochure",
+        date: "2023",
+        techStack: [ "InDesign", "Photoshop"],
+        imgSrc: SVDFarm,
     },
     ],
     mobile: [
@@ -63,11 +68,6 @@ export const projects: Record<string, ProjectDescription[]> = {
         techStack: ["Flutter", "Dart", "Firebase", "Google Maps"],
         imgSrc: Bukqueue,
     },
-    {
-        name: "Super Marknel Game",
-        date: "2024",
-        techStack: ["Flutter", "Dart", "Flame Engine"],
-        imgSrc: Bukqueue,
-    },
+
     ],
 }

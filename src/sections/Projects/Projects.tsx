@@ -16,18 +16,18 @@ function Projects() {
   const ref = useRef<HTMLDivElement>(null);
   const id = "Projects";
   const tabDefs = [
-    { label: "Graphics & UI", component: DesignTab, icon: Brush },
-    {
-      label: "Game",
-      component: GameDevelopmentTab,
-      icon: SportsEsports,
-    },
     {
       label: "Mobile",
       component: MobileDevelopmentTab,
       icon: Smartphone,
     },
+    {
+      label: "Game",
+      component: GameDevelopmentTab,
+      icon: SportsEsports,
+    },
     { label: "Web", component: WebDevelopmentTab, icon: Language },
+    { label: "Graphics & UI", component: DesignTab, icon: Brush },
   ];
   return (
     <div
