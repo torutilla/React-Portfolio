@@ -5,6 +5,8 @@ import BusyKitchen from "../../assets/images/BusyKitchen.jpg"
 import SVDFarm from "../../assets/images/SVDFarm.jpg";
 import BowArrow from "../../assets/images/Bow&Arrow.png";
 import ActionRPG from "../../assets/images/ActionRPG.png";
+import Jensofia from "../../assets/images/jensofia.jpg";
+import Resume from "../../assets/images/Resume.png";
 
 export const projects: Record<string, ProjectDescription[]> = {
     game: [
@@ -26,7 +28,7 @@ export const projects: Record<string, ProjectDescription[]> = {
         name: "Interactive Resume",
         date: "2025",
         techStack: ["HTML", "CSS", "JavaScript"],
-        imgSrc: "./",
+        imgSrc: Resume,
     },
     ],
     design: [
@@ -52,7 +54,7 @@ export const projects: Record<string, ProjectDescription[]> = {
         name: "Jen Sofia",
         date: "2023",
         techStack: ["Illustrator", "InDesign", "Photoshop"],
-        imgSrc: "./",
+        imgSrc: Jensofia,
     },
     {
         name: "SVD Farm Brochure",
