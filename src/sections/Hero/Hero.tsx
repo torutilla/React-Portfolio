@@ -28,7 +28,7 @@ function Hero() {
       id="Home"
       className="relative flex flex-col h-screen w-dvw items-center justify-center gap-xl z-0"
     >
-      <div className="absolute top-0 flex w-full justify-between items-center p-4">
+      {/* <div className="absolute top-0 flex w-full justify-between items-center p-4">
         <a href="#" className="flex leading-none size-7 md:size-9">
           <img src={"./Logo.svg"} alt="logo" />
         </a>
@@ -37,7 +37,7 @@ function Hero() {
             Get in Touch
           </FillButton>
         </div>
-      </div>
+      </div> */}
       <div className="flex-col flex justify-center items-center text-center">
         <WipeAnimator duration={0.2} direction="bottom">
           <HeroTitle text="CHRISTIAN TORRES" />

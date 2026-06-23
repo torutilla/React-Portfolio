@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
 import { ScrollRefContext } from "./hooks/useSmoothScroll.ts";
 import Background from "./components/Background.tsx";
-
+import NavbarWrapper from "./components/layout/NavbarWrapper.tsx";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 function App() {
   const smootherRef = useRef<ScrollSmoother>(null);
@@ -22,7 +22,7 @@ function App() {
     <ScrollRefContext.Provider value={smootherRef}>
       <Background />
       <div id={"smooth-wrapper"}>
-        {/* <NavbarWrapper /> */}
+        <NavbarWrapper />
         <div id="smooth-content">
           <Home />
         </div>

@@ -18,28 +18,26 @@ function ProjectCard({ project, onClick }: CardProps) {
   const stackRef = useRef<HTMLDivElement>(null);
   const tl = useRef<GSAPTimeline>(null);
   useEffect(() => {
-    gsap.set(blurdivRef.current, { opacity: 0 });
-    gsap.set(stackRef.current, { yPercent: 100 });
+    // gsap.set(blurdivRef.current, { opacity: 0 });
+    // gsap.set(stackRef.current, { yPercent: 100 });
     tl.current = gsap.timeline();
   }, []);
   const onHover = () => {
-    tl.current
-      ?.to(imgRef.current, {
-        scale: 1.05,
-        ease: "power4.in",
-        duration: 0.3,
-      })
-      .to(blurdivRef.current, { opacity: 1 }, "<")
-      .to(stackRef.current, { yPercent: 0 }, "<");
+    tl.current?.to(imgRef.current, {
+      scale: 1.05,
+      ease: "power3.in",
+      duration: 0.3,
+    });
   };
   const onHoverOut = () => {
-    tl.current
-      ?.to(imgRef.current, { scale: 1, ease: "power3.out" })
-      .to(blurdivRef.current, { opacity: 0 }, "<")
-      .to(stackRef.current, { yPercent: 100 }, "<");
+    tl.current?.to(imgRef.current, { scale: 1, ease: "power3.out" });
   };
   return (
-    <div className="relative w-full rounded-lg overflow-clip cursor-pointer">
+    <div
+      onMouseEnter={onHover}
+      onMouseLeave={onHoverOut}
+      className="relative w-full rounded-lg overflow-clip cursor-pointer"
+    >
       <div className="overflow-clip aspect-video">
         <img
           ref={imgRef}
@@ -49,10 +47,8 @@ function ProjectCard({ project, onClick }: CardProps) {
       </div>
       <div
         onClick={onClick}
-        onMouseLeave={onHoverOut}
-        onMouseEnter={onHover}
         ref={blurdivRef}
-        className="absolute inset-0 bg-background/40 backdrop-blur-xs flex rounded-lg items-end"
+        className="absolute inset-0 h-fit bg-background/40 backdrop-blur-xs flex rounded-b-lg self-end"
       >
         <div ref={stackRef} className="p-3 flex flex-col gap-1">
           <p className="font-title text-text text-xs md:text-md">

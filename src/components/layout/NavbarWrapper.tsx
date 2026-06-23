@@ -8,8 +8,8 @@ export type Navigation = {
 };
 export const links: Navigation[] = [
   { heading: "Home", target: "Home" },
-  { heading: "Projects", target: "Projects" },
   { heading: "About Me", target: "About" },
+  { heading: "Projects", target: "Projects" },
 ];
 export const contactButton: Navigation = {
   heading: "Get in Touch",
