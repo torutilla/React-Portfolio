@@ -22,7 +22,7 @@ function Dropdown({ content, items }: DropdownProps) {
   const handleItemClick = (
     e: React.MouseEvent<HTMLDivElement>,
     index: number,
-    onClick?: () => void
+    onClick?: () => void,
   ) => {
     const el = itemRefs.current[index];
     const ripple = useRippleAnimation(el, 1);
@@ -60,7 +60,7 @@ function Dropdown({ content, items }: DropdownProps) {
     }
   };
   return (
-    <div className="relative flex flex-col gap-3 items-center">
+    <div className="relative flex flex-col gap-3 items-start">
       <FillButton onclick={handleButtonClick} onBlur={handleButtonBlur}>
         {content}
       </FillButton>

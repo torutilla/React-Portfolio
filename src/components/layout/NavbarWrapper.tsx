@@ -7,13 +7,13 @@ export type Navigation = {
   target: string;
 };
 export const links: Navigation[] = [
-  { heading: "Home", target: "Home" },
-  { heading: "About Me", target: "About" },
-  { heading: "Projects", target: "Projects" },
+  { heading: "Home", target: "#Home" },
+  { heading: "About Me", target: "#About" },
+  { heading: "Projects", target: "#Projects" },
 ];
 export const contactButton: Navigation = {
   heading: "Get in Touch",
-  target: "contact",
+  target: "#Contact",
 };
 function NavbarWrapper() {
   const [sidebarOpen, setSidebar] = useState(false);

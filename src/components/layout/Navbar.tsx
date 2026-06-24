@@ -88,7 +88,9 @@ function Navbar({
         ))}
       </ul>
       <div className="hidden justify-end md:flex">
-        <FillButton>{button.heading}</FillButton>
+        <FillButton onclick={() => scrollTo(button.target)}>
+          {button.heading}
+        </FillButton>
       </div>
       <div className="flex justify-end md:hidden">
         <BurgerButton onClick={setSidebarActive} isActive={menuOpen} />

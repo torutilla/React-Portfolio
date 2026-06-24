@@ -4,18 +4,22 @@
   font-family: "Horizon";
   src: url("./assets/fonts/Horizon.otf");
 }
+
 @font-face {
   font-family: "Inter";
   src: url("./assets/fonts/Inter-VariableFont_opsz,wght.ttf");
 }
+
 @font-face {
   font-family: "Satoshi";
   src: url("./assets/fonts/Satoshi-Variable.ttf");
 }
+
 @font-face {
   font-family: "Roboto";
   src: url("./assets/fonts/Roboto-VariableFont_wdth,wght.ttf");
 }
+
 @font-face {
   font-family: "Roboto-Mono";
   src: url("./assets/fonts/RobotoMono-VariableFont_wght.ttf");
@@ -39,7 +43,7 @@
   --link-text: #82aaff;
   --accent: #1aa879;
   --accent-background: #184e3c;
-  --background-highlight: #608669;
+  --background-highlight: #87bb93;
   --border: #f1f1f1;
 
 
@@ -67,12 +71,14 @@
   --color-surface: var(--surface);
   --color-overlay: var(--overlay);
   --color-primary: var(--primary);
-
+  --color-cta: #7c3aed;
   --color-text: var(--text);
   --color-secondary-text: var(--secondary-text);
   --color-placeholder-text: var(--placeholder-text);
   --color-hover-text: var(--hover-text);
   --color-link-text: var(--link-text);
+
+  --color-background-highlight: var(--background-highlight);
 
   --color-accent: var(--accent);
 
@@ -128,6 +134,7 @@ body {
     transform: scale(0);
     opacity: 1;
   }
+
   to {
     transform: scale(4);
     opacity: 0;
@@ -138,6 +145,7 @@ body {
   0% {
     background-position-x: 100%;
   }
+
   100% {
     background-position-x: -100%;
   }
