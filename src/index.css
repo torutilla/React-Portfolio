@@ -71,7 +71,8 @@
   --color-surface: var(--surface);
   --color-overlay: var(--overlay);
   --color-primary: var(--primary);
-  --color-cta: #7c3aed;
+  --color-cta: #f59e0b;
+  --color-cta-highlight: #f3db72;
   --color-text: var(--text);
   --color-secondary-text: var(--secondary-text);
   --color-placeholder-text: var(--placeholder-text);

@@ -28,7 +28,7 @@ function FillButton({
 
   const colorStyles =
     color === "cta"
-      ? "bg-violet-600 text-white focus:outline-violet-600 hover:bg-violet-500"
+      ? "bg-cta text-black focus:outline-cta hover:bg-cta-highlight"
       : "bg-accent text-background focus:outline-accent hover:bg-background-highlight";
 
   const onClickHandler = (e: React.MouseEvent) => {
