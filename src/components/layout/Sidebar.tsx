@@ -1,7 +1,8 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { type Navigation } from "./NavbarWrapper.tsx";
-import { useScroll } from "../../hooks/useSmoothScroll.ts";
+import { useSectionNavigation } from "../../hooks/useSectionNavigation.ts";
+import type { HomeSection } from "../../lib/projectRoutes.ts";
 type SidebarProps = {
   isOpen: boolean;
   navigations: Navigation[];
@@ -10,7 +11,11 @@ type SidebarProps = {
 
 function Sidebar({ isOpen, navigations, onClose }: SidebarProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const scrollTo = useScroll();
+  const navigateToSection = useSectionNavigation();
+  const handleNavigation = (target: Navigation["target"]) => {
+    onClose();
+    navigateToSection(target as `#${HomeSection}`);
+  };
   useEffect(() => {
     if (isOpen) {
       gsap.to(ref.current, { x: 0, duration: 0.2 });
@@ -28,11 +33,11 @@ function Sidebar({ isOpen, navigations, onClose }: SidebarProps) {
           {navigations.map((nav) => (
             <li key={nav.heading} className="flex p-1">
               <a
+                href={nav.target}
                 className="text-lg sm:text-xl text-text font-title"
                 onClick={(e) => {
                   e.preventDefault();
-                  onClose();
-                  scrollTo(nav.target);
+                  handleNavigation(nav.target);
                 }}
               >
                 {nav.heading}

@@ -1,34 +1,11 @@
 import { useRef } from "react";
 import TitleText from "../../components/common/texts/TitleText.tsx";
 import TabContainer from "../../components/layout/TabContainer.tsx";
-import MobileDevelopmentTab from "./MobileDevelopmentTab.tsx";
-import GameDevelopmentTab from "./GameDevelopmentTab.tsx";
-import DesignTab from "./DesignTab.tsx";
-import {
-  SportsEsports,
-  Smartphone,
-  Brush,
-  Language,
-} from "@mui/icons-material";
-import WebDevelopmentTab from "./WebDevelopmentTab.tsx";
+import { PROJECT_TAB_DEFS } from "./projectTabDefs.tsx";
 
 function Projects() {
   const ref = useRef<HTMLDivElement>(null);
   const id = "Projects";
-  const tabDefs = [
-    {
-      label: "Mobile",
-      component: MobileDevelopmentTab,
-      icon: Smartphone,
-    },
-    {
-      label: "Game",
-      component: GameDevelopmentTab,
-      icon: SportsEsports,
-    },
-    { label: "Web", component: WebDevelopmentTab, icon: Language },
-    { label: "Graphics & UI", component: DesignTab, icon: Brush },
-  ];
   return (
     <div
       id={id}
@@ -39,7 +16,7 @@ function Projects() {
       <TabContainer
         dynamicHeight={true}
         headingStyle={{ size: "sm" }}
-        tabs={tabDefs.map(({ label, component: Comp, icon: Icon }) => ({
+        tabs={PROJECT_TAB_DEFS.map(({ label, component: Comp, icon: Icon }) => ({
           heading: (
             <>
               <span className="lg:hidden">

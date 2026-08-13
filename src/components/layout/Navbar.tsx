@@ -1,11 +1,12 @@
 import BurgerButton from "../common/buttons/BurgerButton.tsx";
-import { useScroll } from "../../hooks/useSmoothScroll.ts";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { useScrollDirection } from "../../hooks/useScrollDirection.ts";
 import FillButton from "../common/buttons/FillButton.tsx";
 import { type Navigation } from "./NavbarWrapper.tsx";
 import WipeAnimator from "../animator/WipeAnimator.tsx";
+import { useSectionNavigation } from "../../hooks/useSectionNavigation.ts";
+import type { HomeSection } from "../../lib/projectRoutes.ts";
 type NavbarProps = {
   logoSrc: string;
   navigations: Navigation[];
@@ -57,13 +58,23 @@ function Navbar({
       });
     }
   }, [scrollDir]);
-  const scrollTo = useScroll();
+  const navigateToSection = useSectionNavigation();
+  const handleNavigation = (target: Navigation["target"]) => {
+    navigateToSection(target as `#${HomeSection}`);
+  };
   return (
     <nav
       ref={navRef}
       className="fixed p-2.5 px-5 grid grid-cols-2 md:grid-cols-3 justify-between items-center top-2 right-2 left-2 z-50 rounded-full backdrop-blur-sm"
     >
-      <a href="#" className="flex leading-none size-7 md:size-9">
+      <a
+        href="#Home"
+        onClick={(e) => {
+          e.preventDefault();
+          handleNavigation("#Home");
+        }}
+        className="flex leading-none size-7 md:size-9"
+      >
         <img src={logoSrc} alt="logo" />
       </a>
 
@@ -75,9 +86,10 @@ function Navbar({
           >
             <WipeAnimator direction="bottom">
               <a
+                href={element.target}
                 onClick={(e) => {
                   e.preventDefault();
-                  scrollTo(element.target);
+                  handleNavigation(element.target);
                 }}
                 className="hover:text-accent transition duration-100 ease-in-out text-sm text-text font-title"
               >
@@ -88,7 +100,7 @@ function Navbar({
         ))}
       </ul>
       <div className="hidden justify-end md:flex">
-        <FillButton onclick={() => scrollTo(button.target)}>
+        <FillButton onclick={() => handleNavigation(button.target)}>
           {button.heading}
         </FillButton>
       </div>

@@ -7,6 +7,8 @@ export type ProjectDescription = {
   name: string;
   date: string;
   techStack: string[];
+  slug?: string;
+  detailedDescription?: string;
 };
 type CardProps = {
   project: ProjectDescription;
@@ -34,6 +36,7 @@ function ProjectCard({ project, onClick }: CardProps) {
   };
   return (
     <div
+      onClick={onClick}
       onMouseEnter={onHover}
       onMouseLeave={onHoverOut}
       className="relative w-full rounded-lg overflow-clip cursor-pointer"
@@ -42,13 +45,13 @@ function ProjectCard({ project, onClick }: CardProps) {
         <img
           ref={imgRef}
           src={project.imgSrc}
-          className="w-full h-full object-cover"
+          alt={project.name}
+          className="w-full h-full object-cover pointer-events-none"
         />
       </div>
       <div
-        onClick={onClick}
         ref={blurdivRef}
-        className="absolute inset-0 h-fit bg-background/40 backdrop-blur-xs flex rounded-b-lg self-end"
+        className="absolute inset-x-0 bottom-0 h-fit bg-background/40 backdrop-blur-xs flex rounded-b-lg"
       >
         <div ref={stackRef} className="p-3 flex flex-col gap-1">
           <p className="font-title text-text text-xs md:text-md">

@@ -10,16 +10,22 @@ type TabContainerProps = {
   tabs: Tab[];
   headingStyle?: TextStyle;
   dynamicHeight?: boolean;
+  initialTabIndex?: number;
 };
 function TabContainer({
   tabs,
   headingStyle = { size: "md", variant: "title", color: "text" },
   dynamicHeight = false,
+  initialTabIndex = 0,
 }: TabContainerProps) {
-  const [currentTabIndex, setCurrentTab] = useState(0);
+  const [currentTabIndex, setCurrentTab] = useState(initialTabIndex);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const currentElementRef = useRef<(HTMLDivElement | null)[]>([]);
+  useLayoutEffect(() => {
+    setCurrentTab(initialTabIndex);
+  }, [initialTabIndex]);
+
   useLayoutEffect(() => {
     const wrapper = wrapperRef.current;
     const container = containerRef.current;
