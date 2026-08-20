@@ -8,7 +8,7 @@ import Projects from "../sections/Projects/Projects.tsx";
 function ProjectsPage() {
   const id = "ProjectsPage";
   return (
-    <div className="pt-24">
+    <div className="pt-24 bg-background">
       <Projects />
     </div>
     // <div

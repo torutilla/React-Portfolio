@@ -15,7 +15,7 @@ function Socials() {
   ];
   const iconRefs = useMemo(
     () => icons.map((_) => createRef<HTMLButtonElement>()),
-    []
+    [],
   );
   const divRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
@@ -39,7 +39,7 @@ function Socials() {
           x: 0,
           opacity: 1,
         },
-        i * 0.1
+        i * 0.1,
       );
     });
   }, []);

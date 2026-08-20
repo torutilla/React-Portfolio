@@ -5,6 +5,7 @@ import { ScrollRefContext } from "./hooks/useSmoothScroll.ts";
 import Background from "./components/Background.tsx";
 import NavbarWrapper from "./components/layout/NavbarWrapper.tsx";
 import AppRoutes from "./AppRoutes.tsx";
+import Contact from "./sections/Contact/Contact.tsx";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 function App() {
   const smootherRef = useRef<ScrollSmoother>(null);
@@ -26,6 +27,7 @@ function App() {
         <NavbarWrapper />
         <div id="smooth-content">
           <AppRoutes />
+          <Contact />
         </div>
         {/* <FloatingIconButton icon={LightMode} position="bottom-left" /> */}
       </div>

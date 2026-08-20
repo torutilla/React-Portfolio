@@ -2,7 +2,6 @@ import AboutMe from "../sections/About Me/AboutMe.tsx";
 import Hero from "../sections/Hero/Hero.tsx";
 import Projects from "../sections/Projects/Projects.tsx";
 import { useLayoutEffect } from "react";
-import Contact from "../sections/Contact/Contact.tsx";
 // import gsap from "gsap";
 
 function Home() {
@@ -16,8 +15,6 @@ function Home() {
       <div className="bg-background">
         <Projects />
       </div>
-
-      <Contact />
     </>
   );
 }
