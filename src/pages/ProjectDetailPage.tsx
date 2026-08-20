@@ -1,28 +1,23 @@
 import { ArrowBack } from "@mui/icons-material";
 import TechStackButton from "../components/layout/TechStackButton.tsx";
-import { projects } from "../sections/Projects/allProjects.ts";
-import type { ProjectCategory } from "../lib/projectRoutes.ts";
-import {
-  getProjectSlug,
-  navigateToProjectsTab,
-} from "../lib/projectRoutes.ts";
+import ProjectGallery from "../components/layout/ProjectGallery.tsx";
+import ReactMarkdown from "react-markdown";
+import { useNavigate, useParams } from "react-router-dom";
+import { getProject } from "../utils/projects.ts";
+import { getScreenshots } from "../utils/screenshots.ts";
 
-type ProjectDetailPageProps = {
-  category: ProjectCategory;
-  slug: string;
-};
-
-function ProjectDetailPage({ category, slug }: ProjectDetailPageProps) {
-  const project = projects[category].find(
-    (entry) => getProjectSlug(entry) === slug,
-  );
+function ProjectDetailPage() {
+  const { slug } = useParams();
+  const project = getProject(slug!);
+  const screenshots = getScreenshots(slug!);
+  const navigate = useNavigate();
 
   if (!project) {
     return (
       <div className="relative w-dvw min-h-screen flex flex-col gap-4 items-start pt-24 px-6 pb-6 bg-background text-text">
         <button
           type="button"
-          onClick={() => navigateToProjectsTab(category)}
+          onClick={() => navigate("/projects")}
           className="flex items-center gap-2 text-text/70 hover:text-text transition-colors cursor-pointer"
         >
           <ArrowBack fontSize="small" />
@@ -37,7 +32,7 @@ function ProjectDetailPage({ category, slug }: ProjectDetailPageProps) {
     <div className="relative w-dvw min-h-screen flex flex-col gap-6 items-center pt-24 px-6 pb-6 bg-background text-text">
       <button
         type="button"
-        onClick={() => navigateToProjectsTab(category)}
+        onClick={() => navigate("/projects")}
         className="self-start flex items-center gap-2 text-text/70 hover:text-text transition-colors cursor-pointer"
       >
         <ArrowBack fontSize="small" />
@@ -47,7 +42,7 @@ function ProjectDetailPage({ category, slug }: ProjectDetailPageProps) {
       <div className="w-full max-w-4xl flex flex-col gap-6">
         <div className="overflow-hidden rounded-lg aspect-video">
           <img
-            src={project.imgSrc}
+            src={project.cover}
             alt={project.name}
             className="w-full h-full object-cover"
           />
@@ -67,16 +62,22 @@ function ProjectDetailPage({ category, slug }: ProjectDetailPageProps) {
 
         <section className="flex flex-col gap-3 rounded-lg border border-white/20 bg-black/30 p-6">
           <h2 className="font-title text-lg">About this project</h2>
-          {project.detailedDescription ? (
-            <p className="font-body text-secondary-text leading-relaxed whitespace-pre-line">
-              {project.detailedDescription}
-            </p>
+          {project.content ? (
+            <div className="project-markdown">
+              <ReactMarkdown>{project.content}</ReactMarkdown>
+            </div>
           ) : (
             <div className="min-h-40 rounded-md border border-dashed border-white/15 bg-black/20 p-4">
               <p className="font-body text-placeholder-text italic">
                 Add a detailed description for this project in{" "}
                 <code className="text-text/80">allProjects.ts</code>.
               </p>
+            </div>
+          )}
+          {screenshots.length != 0 && (
+            <div className="grid gap-3">
+              <h2 className="font-title text-lg">Images</h2>
+              <ProjectGallery screenshots={screenshots} />
             </div>
           )}
         </section>
