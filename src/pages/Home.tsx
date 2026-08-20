@@ -13,7 +13,9 @@ function Home() {
     <>
       <Hero />
       <AboutMe />
-      <Projects />
+      <div className="bg-background">
+        <Projects />
+      </div>
 
       <Contact />
     </>

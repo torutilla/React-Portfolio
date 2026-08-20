@@ -5,13 +5,14 @@ import FillButton from "../../components/common/buttons/FillButton.tsx";
 import OutlineButton from "../../components/common/buttons/OutlineButton.tsx";
 import HeroTitle from "../../components/common/texts/HeroTitle.tsx";
 import { useScroll } from "../../hooks/useSmoothScroll.ts";
+import { interactiveResumeLink } from "../../utils/links.ts";
 
 function Hero() {
   const buttonItems: DropdownItem[] = [
     {
       heading: "Software Developer",
       subtitle: "Download Developer PDF",
-      onClick: () => open("./files/Torres_Christian_GraphicDesigner.pdf"),
+      onClick: () => open("./files/Torres_Christian_SoftwareDeveloper.pdf"),
     },
     {
       heading: "Graphic & UI Designer",
@@ -51,12 +52,7 @@ function Hero() {
       </div>
       <div className="flex gap-2">
         <Dropdown content="Download PDF" items={buttonItems} />
-        <FillButton
-          onclick={() =>
-            open("https://christian-torres-interactive-resume.vercel.app/")
-          }
-          color="cta"
-        >
+        <FillButton onclick={() => open(interactiveResumeLink)} color="cta">
           Interactive Resume
         </FillButton>
       </div>

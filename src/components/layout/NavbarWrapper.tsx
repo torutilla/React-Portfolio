@@ -7,20 +7,20 @@ export type Navigation = {
   target: string;
 };
 export const links: Navigation[] = [
-  { heading: "Home", target: "#Home" },
-  { heading: "About Me", target: "#About" },
-  { heading: "Projects", target: "#Projects" },
+  { heading: "Home", target: "/" },
+  { heading: "About Me", target: "/about-me" },
+  { heading: "Projects", target: "/projects" },
 ];
 export const contactButton: Navigation = {
   heading: "Get in Touch",
-  target: "#Contact",
+  target: "/contact",
 };
 function NavbarWrapper() {
   const [sidebarOpen, setSidebar] = useState(false);
   return (
     <>
       <Navbar
-        logoSrc="./Logo.svg"
+        logoSrc="/public/Logo.svg"
         navigations={links}
         button={contactButton}
         menuOpen={sidebarOpen}

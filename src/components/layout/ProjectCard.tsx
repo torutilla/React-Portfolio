@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import TechStackButton from "./TechStackButton.tsx";
 import gsap from "gsap";
+import type { Project } from "../../utils/projects.ts";
 
 export type ProjectDescription = {
   imgSrc: string;
@@ -8,10 +9,11 @@ export type ProjectDescription = {
   date: string;
   techStack: string[];
   slug?: string;
-  detailedDescription?: string;
+  content?: string;
+  screenshots?: string[];
 };
 type CardProps = {
-  project: ProjectDescription;
+  project: Project;
   onClick?: () => void;
 };
 function ProjectCard({ project, onClick }: CardProps) {
@@ -44,7 +46,7 @@ function ProjectCard({ project, onClick }: CardProps) {
       <div className="overflow-clip aspect-video">
         <img
           ref={imgRef}
-          src={project.imgSrc}
+          src={project.cover}
           alt={project.name}
           className="w-full h-full object-cover pointer-events-none"
         />

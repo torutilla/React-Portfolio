@@ -4,35 +4,27 @@ import {
   Smartphone,
   SportsEsports,
 } from "@mui/icons-material";
-import type { ProjectCategory } from "../../lib/projectRoutes.ts";
-import DesignTab from "./DesignTab.tsx";
-import GameDevelopmentTab from "./GameDevelopmentTab.tsx";
-import MobileDevelopmentTab from "./MobileDevelopmentTab.tsx";
-import WebDevelopmentTab from "./WebDevelopmentTab.tsx";
+import type { ProjectCategory } from "../../utils/projects.ts";
 
 export const PROJECT_TAB_DEFS = [
   {
     key: "mobile" as const,
     label: "Mobile",
-    component: MobileDevelopmentTab,
     icon: Smartphone,
   },
   {
     key: "game" as const,
     label: "Game",
-    component: GameDevelopmentTab,
     icon: SportsEsports,
   },
   {
     key: "web" as const,
     label: "Web",
-    component: WebDevelopmentTab,
     icon: Language,
   },
   {
     key: "design" as const,
-    label: "Graphics & UI",
-    component: DesignTab,
+    label: "Graphic Design",
     icon: Brush,
   },
 ];

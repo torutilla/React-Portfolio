@@ -2,21 +2,21 @@ import { useRef } from "react";
 import TitleText from "../../components/common/texts/TitleText.tsx";
 import TabContainer from "../../components/layout/TabContainer.tsx";
 import { PROJECT_TAB_DEFS } from "./projectTabDefs.tsx";
+import ProjectTab from "./ProjectTab.tsx";
+import { getProjectsByCategory } from "../../utils/projects.ts";
 
 function Projects() {
-  const ref = useRef<HTMLDivElement>(null);
   const id = "Projects";
   return (
     <div
       id={id}
-      ref={ref}
-      className="relative w-dvw min-h-screen inset-0 flex flex-col gap-3 items-center p-6 overflow-hidden md bg-background"
+      className="relative w-dvw min-h-screen inset-0 flex flex-col gap-3 items-center p-6 overflow-hidden md"
     >
       <TitleText text="PROJECTS" trigger={`#${id}`} />
       <TabContainer
         dynamicHeight={true}
         headingStyle={{ size: "sm" }}
-        tabs={PROJECT_TAB_DEFS.map(({ label, component: Comp, icon: Icon }) => ({
+        tabs={PROJECT_TAB_DEFS.map(({ key, label, icon: Icon }) => ({
           heading: (
             <>
               <span className="lg:hidden">
@@ -25,7 +25,7 @@ function Projects() {
               <span className="hidden lg:inline">{label}</span>
             </>
           ),
-          content: <Comp />,
+          content: <ProjectTab projects={getProjectsByCategory(key)} />,
         }))}
       />
     </div>

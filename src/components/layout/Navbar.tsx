@@ -5,8 +5,7 @@ import { useScrollDirection } from "../../hooks/useScrollDirection.ts";
 import FillButton from "../common/buttons/FillButton.tsx";
 import { type Navigation } from "./NavbarWrapper.tsx";
 import WipeAnimator from "../animator/WipeAnimator.tsx";
-import { useSectionNavigation } from "../../hooks/useSectionNavigation.ts";
-import type { HomeSection } from "../../lib/projectRoutes.ts";
+import { useNavigate } from "react-router-dom";
 type NavbarProps = {
   logoSrc: string;
   navigations: Navigation[];
@@ -58,20 +57,16 @@ function Navbar({
       });
     }
   }, [scrollDir]);
-  const navigateToSection = useSectionNavigation();
-  const handleNavigation = (target: Navigation["target"]) => {
-    navigateToSection(target as `#${HomeSection}`);
-  };
+  const navigate = useNavigate();
   return (
     <nav
       ref={navRef}
       className="fixed p-2.5 px-5 grid grid-cols-2 md:grid-cols-3 justify-between items-center top-2 right-2 left-2 z-50 rounded-full backdrop-blur-sm"
     >
       <a
-        href="#Home"
         onClick={(e) => {
           e.preventDefault();
-          handleNavigation("#Home");
+          navigate("/");
         }}
         className="flex leading-none size-7 md:size-9"
       >
@@ -86,10 +81,9 @@ function Navbar({
           >
             <WipeAnimator direction="bottom">
               <a
-                href={element.target}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavigation(element.target);
+                  navigate(element.target);
                 }}
                 className="hover:text-accent transition duration-100 ease-in-out text-sm text-text font-title"
               >
@@ -100,7 +94,7 @@ function Navbar({
         ))}
       </ul>
       <div className="hidden justify-end md:flex">
-        <FillButton onclick={() => handleNavigation(button.target)}>
+        <FillButton onclick={() => navigate(button.target)}>
           {button.heading}
         </FillButton>
       </div>

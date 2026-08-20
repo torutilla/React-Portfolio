@@ -1,8 +1,7 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { type Navigation } from "./NavbarWrapper.tsx";
-import { useSectionNavigation } from "../../hooks/useSectionNavigation.ts";
-import type { HomeSection } from "../../lib/projectRoutes.ts";
+import { useNavigate } from "react-router-dom";
 type SidebarProps = {
   isOpen: boolean;
   navigations: Navigation[];
@@ -11,10 +10,10 @@ type SidebarProps = {
 
 function Sidebar({ isOpen, navigations, onClose }: SidebarProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const navigateToSection = useSectionNavigation();
+  const navigate = useNavigate();
   const handleNavigation = (target: Navigation["target"]) => {
     onClose();
-    navigateToSection(target as `#${HomeSection}`);
+    navigate(target);
   };
   useEffect(() => {
     if (isOpen) {

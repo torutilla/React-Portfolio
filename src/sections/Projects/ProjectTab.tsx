@@ -1,16 +1,12 @@
-import type { ProjectDescription } from "../../components/layout/ProjectCard.tsx";
+import { useNavigate } from "react-router-dom";
 import ProjectCard from "../../components/layout/ProjectCard.tsx";
-import type { ProjectCategory } from "../../lib/projectRoutes.ts";
-import {
-  getProjectSlug,
-  navigateToProject,
-} from "../../lib/projectRoutes.ts";
+import type { Project } from "../../utils/projects.ts";
 
 type ProjectTabProps = {
-  projects: ProjectDescription[];
-  category: ProjectCategory;
+  projects: Project[];
 };
-function ProjectTab({ projects, category }: ProjectTabProps) {
+function ProjectTab({ projects }: ProjectTabProps) {
+  const navigate = useNavigate();
   return (
     <div className={`w-full text-text grid mobile-xl:grid-cols-2 gap-3`}>
       {projects.map((project) => {
@@ -19,7 +15,7 @@ function ProjectTab({ projects, category }: ProjectTabProps) {
             key={project.name}
             project={project}
             onClick={() =>
-              navigateToProject(category, getProjectSlug(project))
+              navigate(`/projects/${project.category}/${project.id}`)
             }
           />
         );

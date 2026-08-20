@@ -45,9 +45,9 @@ function AboutMe() {
         <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="flex flex-col gap-6 items-center lg:items-start text-center lg:text-left">
             <div className="flex flex-col gap-2">
-              <p className="font-title text-xl uppercase tracking-wider text-gray-400">
+              {/* <p className="font-title text-xl uppercase tracking-wider text-gray-400">
                 My Toolkit
-              </p>
+              </p> */}
               <div className="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4">
                 <Avatar imgSrc={imgMe} ref={avatarRef} />
                 <SlideAnimationText
