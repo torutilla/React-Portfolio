@@ -33,7 +33,7 @@ function Navbar({
       border: "1px solid rgba(100, 100, 100, 1)",
       duration: 0.3,
       scrollTrigger: {
-        trigger: "#Home",
+        trigger: window.document.documentElement,
         start: "top top",
         end: "bottom top",
         onLeaveBack: () => {

@@ -2,9 +2,7 @@ import WipeAnimator from "../../components/animator/WipeAnimator.tsx";
 import Dropdown from "../../components/common/buttons/Dropdown.tsx";
 import { type DropdownItem } from "../../components/common/buttons/Dropdown.tsx";
 import FillButton from "../../components/common/buttons/FillButton.tsx";
-import OutlineButton from "../../components/common/buttons/OutlineButton.tsx";
 import HeroTitle from "../../components/common/texts/HeroTitle.tsx";
-import { useScroll } from "../../hooks/useSmoothScroll.ts";
 import { interactiveResumeLink } from "../../utils/links.ts";
 
 function Hero() {
@@ -24,7 +22,7 @@ function Hero() {
   const open = (src: string) => {
     window.open(src, "_blank");
   };
-  const scrollTo = useScroll();
+
   return (
     <div
       id="Home"

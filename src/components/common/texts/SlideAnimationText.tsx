@@ -4,19 +4,17 @@ import { getTextClasses, type TextStyle } from "../../../types/theme.ts";
 
 type SlideTextProps = {
   style: TextStyle;
-  trigger: string;
   children?: React.ReactNode;
   triggerOverrides?: ScrollTrigger.Vars;
 };
 
 function SlideAnimationText({
   style,
-  trigger,
   children,
   triggerOverrides,
 }: SlideTextProps) {
   const ref = useRef<HTMLParagraphElement>(null);
-  useSlideAnimation(trigger, ref, triggerOverrides);
+  useSlideAnimation(ref, triggerOverrides);
 
   return (
     <div>

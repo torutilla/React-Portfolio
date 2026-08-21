@@ -9,10 +9,10 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/about-me" element={<About />} />
+      <Route path="/about-me/" element={<About />} />
       <Route path="/projects/" element={<ProjectsPage />} />
       <Route path="/projects/:category/:slug" element={<ProjectDetailPage />} />
-      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/contact/" element={<ContactPage />} />
     </Routes>
   );
 }

@@ -2,20 +2,25 @@ import SlideAnimationText from "../../components/common/texts/SlideAnimationText
 import TitleText from "../../components/common/texts/TitleText.tsx";
 import Socials from "../../components/layout/Socials.tsx";
 
-function Contact() {
+function ContactFooter() {
   const overrides: ScrollTrigger.Vars = {
-    start: "center-=10% bottom",
-    end: "bottom bottom",
+    start: "top bottom",
+    end: "bottom bottom-=10%",
+    trigger: "#Contact",
   };
   return (
-    <div id="Contact" className="relative h-[70dvh] lg:h-[50dvh] w-screen p-6">
-      <TitleText
-        text="Get in Touch"
-        trigger="#Contact"
-        override={{ start: "top+=20% bottom" }}
-      ></TitleText>
+    <div id="Contact" className="relative w-screen p-6 min-h-[50dvh]">
+      <div className="my-4">
+        <TitleText
+          text="Get in Touch"
+          override={{
+            start: "top bottom+=20%",
+            trigger: "#Contact",
+          }}
+        />
+      </div>
       <div className="h-full p-3 flex flex-col justify-around">
-        <div>
+        <div className="my-2">
           <SlideAnimationText
             style={{
               size: "lg",
@@ -23,14 +28,12 @@ function Contact() {
               weight: "bold",
               color: "primary",
             }}
-            trigger="#Contact"
             triggerOverrides={overrides}
           >
             Hey! I’d love to hear from you
           </SlideAnimationText>
           <SlideAnimationText
             style={{ size: "md", variant: "body", weight: "light" }}
-            trigger="#Contact"
             triggerOverrides={overrides}
           >
             Whether you’re working on a project, want to collaborate, or just
@@ -43,4 +46,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default ContactFooter;

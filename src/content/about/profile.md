@@ -2,7 +2,7 @@
 name: Christian Torres
 role: Developer & Designer
 location: Tagaytay City, Cavite, Philippines
-email: christianjohntrrs@email.com
+email: christianjohntrrs@gmail.com
 avatar: /src/assets/images/me.jpg
 ---
 

@@ -1,8 +1,3 @@
-import TitleText from "../components/common/texts/TitleText.tsx";
-import TabContainer from "../components/layout/TabContainer.tsx";
-import { PROJECT_TAB_DEFS } from "../sections/Projects/projectTabDefs.tsx";
-import ProjectTab from "../sections/Projects/ProjectTab.tsx";
-import { getProjectsByCategory } from "../utils/projects.ts";
 import Projects from "../sections/Projects/Projects.tsx";
 
 function ProjectsPage() {

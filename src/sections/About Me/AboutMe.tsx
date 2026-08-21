@@ -34,7 +34,7 @@ function AboutMe() {
   ];
 
   const avatarRef = useRef<HTMLDivElement>(null);
-  useSlideAnimation("#About", avatarRef);
+  useSlideAnimation(avatarRef);
 
   return (
     <div
@@ -52,8 +52,10 @@ function AboutMe() {
                 <Avatar imgSrc={imgMe} ref={avatarRef} />
                 <SlideAnimationText
                   style={{ size: "xl", variant: "title" }}
-                  trigger="#About"
-                  triggerOverrides={{ start: "top bottom-=20" }}
+                  triggerOverrides={{
+                    start: "top bottom-=20",
+                    trigger: "#About",
+                  }}
                 >
                   Hi, I'm Christian
                 </SlideAnimationText>
@@ -63,8 +65,10 @@ function AboutMe() {
             <div className="w-full text-gray-300 leading-relaxed font-body">
               <SlideAnimationText
                 style={{ size: "md", variant: "body" }}
-                trigger="#About"
-                triggerOverrides={{ start: "top bottom-=20" }}
+                triggerOverrides={{
+                  start: "top bottom-=20",
+                  trigger: "#About",
+                }}
               >
                 I am a programmer and graphic designer with a strong interest in{" "}
                 <strong className="text-white font-semibold">

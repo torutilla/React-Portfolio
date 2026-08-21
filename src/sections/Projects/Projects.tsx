@@ -10,24 +10,26 @@ function Projects() {
   return (
     <div
       id={id}
-      className="relative w-dvw min-h-screen inset-0 flex flex-col gap-3 items-center p-6 overflow-hidden md"
+      className="relative w-dvw  inset-0 flex flex-col gap-3 items-center p-6 overflow-hidden h-fit"
     >
-      <TitleText text="PROJECTS" trigger={`#${id}`} />
-      <TabContainer
-        dynamicHeight={true}
-        headingStyle={{ size: "sm" }}
-        tabs={PROJECT_TAB_DEFS.map(({ key, label, icon: Icon }) => ({
-          heading: (
-            <>
-              <span className="lg:hidden">
-                <Icon></Icon>
-              </span>
-              <span className="hidden lg:inline">{label}</span>
-            </>
-          ),
-          content: <ProjectTab projects={getProjectsByCategory(key)} />,
-        }))}
-      />
+      <TitleText text="PROJECTS" override={{ trigger: `#${id}` }} />
+      <div className="lg:mb-10">
+        <TabContainer
+          dynamicHeight={true}
+          headingStyle={{ size: "sm" }}
+          tabs={PROJECT_TAB_DEFS.map(({ key, label, icon: Icon }) => ({
+            heading: (
+              <>
+                <span className="lg:hidden">
+                  <Icon></Icon>
+                </span>
+                <span className="hidden lg:inline">{label}</span>
+              </>
+            ),
+            content: <ProjectTab projects={getProjectsByCategory(key)} />,
+          }))}
+        />
+      </div>
     </div>
   );
 }

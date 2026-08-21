@@ -1,14 +1,16 @@
 import { ScrollSmoother, ScrollTrigger } from "gsap/all";
 import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { ScrollRefContext } from "./hooks/useSmoothScroll.ts";
 import Background from "./components/Background.tsx";
 import NavbarWrapper from "./components/layout/NavbarWrapper.tsx";
 import AppRoutes from "./AppRoutes.tsx";
-import Contact from "./sections/Contact/Contact.tsx";
+import ContactFooter from "./sections/Contact/ContactFooter.tsx";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 function App() {
   const smootherRef = useRef<ScrollSmoother>(null);
+  const { pathname } = useLocation();
 
   useLayoutEffect(() => {
     smootherRef.current = ScrollSmoother.create({
@@ -20,6 +22,14 @@ function App() {
     });
   }, []);
 
+  useLayoutEffect(() => {
+    // Re-measure all ScrollTriggers when the active route changes. Without this,
+    // triggers created against #Contact (and other sections) keep using stale
+    // offsets measured on the previous page, so the footer animation can fail
+    // to fire when navigating between pages.
+    ScrollTrigger.refresh();
+  }, [pathname]);
+
   return (
     <ScrollRefContext.Provider value={smootherRef}>
       <Background />
@@ -27,7 +37,7 @@ function App() {
         <NavbarWrapper />
         <div id="smooth-content">
           <AppRoutes />
-          <Contact />
+          <ContactFooter />
         </div>
         {/* <FloatingIconButton icon={LightMode} position="bottom-left" /> */}
       </div>

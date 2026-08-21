@@ -26,7 +26,7 @@ const TechSkills = () => {
 
               <div className="flex flex-wrap gap-2">
                 {items.map((skill) => (
-                  <TechStackButton heading={skill} />
+                  <TechStackButton heading={skill} key={skill} />
                 ))}
               </div>
             </div>
