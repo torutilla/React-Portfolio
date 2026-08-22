@@ -23,10 +23,6 @@ function App() {
   }, []);
 
   useLayoutEffect(() => {
-    // Re-measure all ScrollTriggers when the active route changes. Without this,
-    // triggers created against #Contact (and other sections) keep using stale
-    // offsets measured on the previous page, so the footer animation can fail
-    // to fire when navigating between pages.
     ScrollTrigger.refresh();
   }, [pathname]);
 
