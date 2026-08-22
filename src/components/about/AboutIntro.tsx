@@ -1,4 +1,7 @@
 import { getProfile } from "../../utils/about";
+import WipeAnimator from "../animator/WipeAnimator.tsx";
+import RevealAnimator from "../animator/RevealAnimator.tsx";
+import me from "../../assets/images/me.jpg";
 
 const AboutIntro = () => {
   const profile = getProfile();
@@ -11,20 +14,27 @@ const AboutIntro = () => {
             About Me
           </p>
 
-          <h1 className="font-title text-title uppercase leading-[0.95]">
-            {profile.role.split("&")[0]}
-            <br />
-            <span className="text-primary">&</span>
-            {profile.role.split("&")[1]}
-          </h1>
+          <WipeAnimator direction="left">
+            <h1 className="font-title text-title uppercase leading-[0.95]">
+              {profile.role.split("&")[0]}
+            </h1>
+          </WipeAnimator>
+          <WipeAnimator direction="top">
+            <h1 className="font-title text-title uppercase leading-[0.95]">
+              <span className="text-primary">&</span>
+              {profile.role.split("&")[1]}
+            </h1>
+          </WipeAnimator>
 
           <div className="max-w-2xl mt-10">
-            <p className="font-body text-lg md:text-xl text-text leading-relaxed whitespace-pre-line">
-              {profile.content}
-            </p>
+            <RevealAnimator delay={0.4}>
+              <p className="font-body text-lg md:text-xl text-text leading-relaxed whitespace-pre-line">
+                {profile.content}
+              </p>
+            </RevealAnimator>
           </div>
 
-          <div className="flex flex-wrap gap-4 mt-8">
+          <RevealAnimator delay={0.6} className="flex flex-wrap gap-4 mt-8">
             <span className="font-mono text-xs uppercase tracking-widest text-secondary-text">
               {profile.location}
             </span>
@@ -37,25 +47,23 @@ const AboutIntro = () => {
             >
               {profile.email}
             </a>
-          </div>
+          </RevealAnimator>
         </div>
 
         <div className="flex justify-center lg:justify-end">
-          <div className="relative w-56 h-56 md:w-64 md:h-64">
-            <div className="absolute inset-0 rounded-full border border-primary/30" />
+          <RevealAnimator delay={0.5} y={0} scale={0.85}>
+            <div className="relative w-56 h-56 md:w-64 md:h-64">
+              <div className="absolute inset-0 rounded-full border border-primary/30" />
 
-            <div className="absolute inset-5 rounded-full bg-surface border border-border/20 flex items-center justify-center overflow-hidden">
-              <img
-                src={profile.avatar}
-                alt="Avatar"
-                className="w-full h-full object-cover"
-              />
+              <div className="absolute inset-5 rounded-full bg-surface border border-border/20 flex items-center justify-center overflow-hidden">
+                <img
+                  src={me}
+                  alt="Avatar"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
-
-            <div className="absolute -bottom-3 -right-3 px-3 py-2 bg-primary text-button-text font-mono text-xs uppercase tracking-wider">
-              Developer
-            </div>
-          </div>
+          </RevealAnimator>
         </div>
       </div>
     </section>

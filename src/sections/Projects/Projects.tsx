@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import TitleText from "../../components/common/texts/TitleText.tsx";
 import TabContainer from "../../components/layout/TabContainer.tsx";
 import { PROJECT_TAB_DEFS } from "./projectTabDefs.tsx";
@@ -10,7 +9,7 @@ function Projects() {
   return (
     <div
       id={id}
-      className="relative w-dvw  inset-0 flex flex-col gap-3 items-center p-6 overflow-hidden h-fit"
+      className="relative w-dvw  inset-0 flex flex-col gap-3 items-center p-6 overflow-hidden"
     >
       <TitleText text="PROJECTS" override={{ trigger: `#${id}` }} />
       <div className="lg:mb-10">

@@ -9,7 +9,10 @@ function ContactFooter() {
     trigger: "#Contact",
   };
   return (
-    <div id="Contact" className="relative w-screen p-6 min-h-[50dvh]">
+    <div
+      id="Contact"
+      className="relative w-screen p-6 min-h-[40dvh] lg:min-h-[50dvh] flex flex-col justify-evenly"
+    >
       <div className="my-4">
         <TitleText
           text="Get in Touch"

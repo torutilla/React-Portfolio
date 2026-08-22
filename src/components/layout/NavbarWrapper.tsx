@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "./Navbar.tsx";
 import Sidebar from "./Sidebar.tsx";
-
+import logo from "/public/Logo.svg";
 export type Navigation = {
   heading: string;
   target: string;
@@ -20,7 +20,7 @@ function NavbarWrapper() {
   return (
     <>
       <Navbar
-        logoSrc="/public/Logo.svg"
+        logoSrc={logo}
         navigations={links}
         button={contactButton}
         menuOpen={sidebarOpen}

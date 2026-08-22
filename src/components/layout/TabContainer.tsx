@@ -40,8 +40,38 @@ function TabContainer({
         ScrollTrigger.refresh();
       },
     });
-    if (dynamicHeight) gsap.to(container, { height: activeEl.offsetHeight });
   }, [currentTabIndex]);
+
+  const hasInitialized = useRef(false);
+  useLayoutEffect(() => {
+    const wrapper = wrapperRef.current;
+    const container = containerRef.current;
+    if (!wrapper || !container) return;
+
+    // First mount: force the strip to the active panel before the first paint
+    // so the panel renders edge-to-edge (rather than neighboring panels being
+    // clipped by the overflow-hidden container).
+    if (!hasInitialized.current) {
+      hasInitialized.current = true;
+      gsap.set(wrapper, { xPercent: -currentTabIndex * 100 });
+    }
+  }, [currentTabIndex]);
+
+  useLayoutEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    if (!dynamicHeight) {
+      // Fixed-height mode: reset to a sane full width on mount so the first
+      // paint isn't shrunk/cropped.
+      gsap.set(container, { height: "auto" });
+      return;
+    }
+    const activeEl = currentElementRef.current[currentTabIndex];
+    if (!activeEl) return;
+    // Set the correct height immediately with dynamicHeight so the very first
+    // paint isn't at the `h-auto`/previous stale height.
+    gsap.set(container, { height: activeEl.offsetHeight });
+  }, [dynamicHeight, currentTabIndex, tabs]);
   const handleOnClick = (newIndex: number) => {
     setCurrentTab(newIndex);
   };
@@ -54,7 +84,7 @@ function TabContainer({
               key={index}
               onClick={() => handleOnClick(index)}
               className={`${getTextClasses(
-                headingStyle
+                headingStyle,
               )} cursor-pointer p-1.5 rounded-full lg:rounded-md ${
                 currentTabIndex == index
                   ? "text-text bg-neutral-600"
